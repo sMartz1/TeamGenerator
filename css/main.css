@@ -1,27 +1,100 @@
-body {
-    background-color: coral;
+*{
+    margin: 0px;
+    padding: 0px;
 }
 
+body {
+    background-color: rgb(251, 11, 11);
+}
 
+#section2,#section3{
+    display: none;
+}
+
+/* Secciones principales */
 .section{
-    background-color: rgba(238, 234, 234, 0.808);
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(238, 234, 234, 0.908);
     margin:2%;
     padding: 1%;
     border-radius: 10px;
+    min-height: 640px;
 }
 
+.control{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 2%;
+    width: 100%;
+}
+
+.text{
+    border-radius: 20px;
+    border: 0px transparent;
+    box-shadow: 1px 1px 3px grey;
+    font-size: 100%;
+    padding: 1%;
+}
+
+.boxText{
+    margin: auto;
+    margin-top: 2%;
+    width: 95%;
+    background-color: white;
+    min-height: 450px;
+    border-radius: 30px;
+    box-shadow: 4px 6px 5px rgba(199, 195, 195, 0.678);
+}
+
+.labels{
+    font-size: 300%;
+    font-weight: bolder;
+    margin: 1%;
+}
+
+
+/* Estilos botones */
 .button{
     display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    background-color: rgb(240, 210, 155);
-    width: 50px;
+    background-color: rgba(255, 0, 0, 0.678);
+    color: white;
+    font-size: 720%;
+    width: 150px;
     height: 50px;
-    border-radius: 50%;
-    margin: 2%;
+    border-radius: 30px;
+    padding-bottom: 1%;
+    margin: 1%;
 }
 
+#section1 .button, #section3 .button{
+    margin: auto;
+}
+
+.menuButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 150%;
+    background-color: rgba(255, 0, 0, 0.678);
+    width: 150px;
+    border-radius: 30px;
+    color: white;
+}
+
+.buttonContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    top: 400px;
+    width: 100%;
+}
 
 /* Clase para controlar pagina actual */
 
