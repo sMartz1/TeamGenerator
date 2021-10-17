@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Generator</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="script/main.js"></script>
+
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="boxText"></div>
 
         <!--Este seria el boton para pasar a la siguiente pagina-->
-        <div class="button">→</div>
+        <div class="button" onclick="changePage(1)">→</div>
     </section>
 
     <section class="section" id="section2">
@@ -34,16 +34,27 @@
             <div class="button">←</div>
             <div class="button">→</div>
         </div>
+
+    <section class="section noVisibility" id="section2">
+        <p>Define el tamaño de los equipos: </p>
+        <input type="text" />
+
+        <!--Boton para marcha atras-->
+        <div class="button" onclick="changePage(0)">←</div>
+
+        <!--Boton para formar equipos-->
+        <div class="button" onclick="changePage(1)">→</div>
     </section>
 
-    <section class="section" id="section3">
+    <section class="section noVisibility" id="section3">
         <!--Aqui deberian mostrarse los equipos-->
         <div class="boxText"></div>
 
         <!--Boton para volver atras-->
-        <div class="button">←</div>
+        <div class="button" onclick="changePage(0)">←</div>
     </section>
 
 </body>
+<script src="script/main.js"></script>
 
 </html>
