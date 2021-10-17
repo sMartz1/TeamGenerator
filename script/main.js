@@ -5,8 +5,6 @@ let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
 let s3 = document.getElementById("section3");
 
-console.log(s1);
-
 
 //Creamos funcion para cambiar de pagina que tendra dos posible valores ( 0 para retroceder , 1 para avanzar)
 //Dado que tenemos 3 secciones los valores son entre 0-2 pero 
