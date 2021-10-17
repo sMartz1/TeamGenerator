@@ -4,6 +4,9 @@ let currentPage = 0;
 let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
 let s3 = document.getElementById("section3");
+let botones = document.getElementsByClassName("menuButton");
+let valores = document.getElementsByClassName("text");
+const playerBoards = document.getElementsByClassName('boxText');
 
 console.log(s1);
 
@@ -73,3 +76,36 @@ function changeDom() {
 
 }
 //
+
+/* ------- Funcionalidades Section 1 -------- */
+//Falta usar un pseudoElemento para agregar la funcion de borrar jugador -> ¿Se podra hacer desde js?
+//Posibilidad de editar el nombre -> Saber si contiene el string dicho array y obtener su indice
+
+
+//Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
+//dado que sera usado en las section 2 y 3
+var players = [];
+
+function addPlayer() {
+    //Recibimos el valor del input y lo introducimos a players
+    let valor = valores[0].value;
+    players.push(valor);
+
+    //Convertimos el valor a un textNode y creamos una nueva etiqueta para juntar ambos
+    valor = document.createTextNode(valor);
+    let player = document.createElement('p');
+    player.appendChild(valor);
+
+    //Agregamos el elemento al div boxText
+    playerBoards[0].appendChild(player)
+}
+
+//Imaginemos que tengo el resultado de la seleccion
+function modifyPlayer(player) {
+    console.log('Proximamente');
+}
+
+//Imaginemos que tengo el resultado del evento del pseudoelemento
+function removePlayer(player) {
+    console.log('Proximamente');
+}
