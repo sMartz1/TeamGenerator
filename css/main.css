@@ -2,6 +2,7 @@ body {
     background-color: coral;
 }
 
+
 .section{
     background-color: rgba(238, 234, 234, 0.808);
     margin:2%;
@@ -20,3 +21,11 @@ body {
     border-radius: 50%;
     margin: 2%;
 }
+
+
+/* Clase para controlar pagina actual */
+
+.noVisibility {
+    display: none;
+}
+
