@@ -75,12 +75,11 @@ function changeDom() {
     }
 
 }
-//
+
 
 /* ------- Funcionalidades Section 1 -------- */
-//Falta usar un pseudoElemento para agregar la funcion de borrar jugador -> ¿Se podra hacer desde js?
-//Posibilidad de editar el nombre -> Saber si contiene el string dicho array y obtener su indice
-
+//Añadir funcionalidad tecla ENTER para agregar usuario (y a ser posible terminar de editarlo tambien)
+//Necesito usar un evento para comenzar a editar el nombre y un evento para terminar de editarlo y guardar definitivamente el valor
 
 //Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
 //dado que sera usado en las section 2 y 3
@@ -96,16 +95,42 @@ function addPlayer() {
     let player = document.createElement('p');
     player.appendChild(valor);
 
-    //Agregamos el elemento al div boxText
+    //Añadimos atributos a nuestras etiquetas
+    player.setAttribute("onclick", "modifyPlayer(this)");
+
+    //Agregamos el elemento al div boxText de la section 1
     playerBoards[0].appendChild(player)
 }
 
-//Imaginemos que tengo el resultado de la seleccion
+//Primera parte: recoge el valor de la etiqueta antes del cambio, lo busca y lo elimina
 function modifyPlayer(player) {
+    player.setAttribute("contentEditable", "true");
+    player = player.textContent;
+    players.splice(players.indexOf(player), 1);
+}
+
+//Segunda parte: recoge el valor editado y lo pushea al array
+function setModify(player) {
+    player = player.textContent;
+    players.push(player);
+}
+
+//Aun sin trabajar
+function removePlayer(player) {
+    player = player.textContent;
+
+    if (players.contains[player]) {
+        players.indexOf(player);
+    }
+
     console.log('Proximamente');
 }
 
-//Imaginemos que tengo el resultado del evento del pseudoelemento
-function removePlayer(player) {
-    console.log('Proximamente');
+//Esta funcion eliminaria todos los players tanto en el array como en el boxText
+function removeAll() {
+    players = [];
+
+    while (playerBoards[0].firstChild) {
+        playerBoards[0].removeChild(playerBoards[0].firstChild);
+    }
 }
