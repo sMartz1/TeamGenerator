@@ -1,24 +1,35 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
 body {
-    background-color: rgb(251, 11, 11);
+    background: linear-gradient(to left, #36d1dc, #5b86e5);
+    /* background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);*/
+    padding: 20px 100px;
 }
+
+@media (max-width: 600px) {
+    .facet_sidebar {
+        display: none;
+    }
+}
+
 
 /* Secciones principales */
-.section{
+
+.section {
     display: flex;
     flex-direction: column;
-    background-color: rgba(238, 234, 234, 0.908);
-    margin:2%;
+    background-color: rgba(238, 234, 234, 0.2);
+    border: solid rgba(238, 234, 234, 0.2) 1px;
+    margin: 2%;
     padding: 1%;
     border-radius: 10px;
-    min-height: 640px;
+    min-height: 600px;
 }
 
-.control{
+.control {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -26,7 +37,7 @@ body {
     width: 100%;
 }
 
-.text{
+.text {
     border-radius: 20px;
     border: 0px transparent;
     box-shadow: 1px 1px 3px grey;
@@ -34,17 +45,17 @@ body {
     padding: 1%;
 }
 
-.boxText{
+.boxText {
     margin: auto;
     margin-top: 2%;
     width: 95%;
-    background-color: white;
+    background-color: rgba(238, 234, 234, 0.9);
     min-height: 450px;
     border-radius: 30px;
     box-shadow: 4px 6px 5px rgba(199, 195, 195, 0.678);
 }
 
-.labels{
+.labels {
     font-size: 300%;
     font-weight: bolder;
     margin: 1%;
@@ -52,7 +63,8 @@ body {
 
 
 /* Estilos botones */
-.button{
+
+.button {
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -67,11 +79,12 @@ body {
     margin: 1%;
 }
 
-#section1 .button, #section3 .button{
+#section1 .button,
+#section3 .button {
     margin: auto;
 }
 
-.menuButton{
+.menuButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +96,7 @@ body {
     color: white;
 }
 
-.buttonContainer{
+.buttonContainer {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -92,9 +105,9 @@ body {
     width: 100%;
 }
 
+
 /* Clase para controlar pagina actual */
 
 .noVisibility {
     display: none;
 }
-
