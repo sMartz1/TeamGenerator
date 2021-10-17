@@ -7,7 +7,7 @@ body {
     background-color: coral;
 }
 
-#section2,#section1{
+#section3,#section2{
     display: none;
 }
 
@@ -19,7 +19,7 @@ body {
     margin:2%;
     padding: 1%;
     border-radius: 10px;
-    min-height: 650px;
+    min-height: 640px;
 }
 
 .control{
@@ -61,10 +61,11 @@ body {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    background-color: rgb(240, 210, 155);
+    background-color: rgba(255, 0, 0, 0.678);
+    color: white;
     font-size: 120px;
-    width: 25%;
-    height: 200px;
+    width: 10%;
+    height: 50px;
     border-radius: 30px;
     padding-bottom: 1%;
     margin: 1%;
@@ -73,7 +74,7 @@ body {
 #section1 .button{
     position:relative;
     top: 0%;
-    left: 71%;
+    left: 81.5%;
 }
 
 .menuButton{
@@ -93,7 +94,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    top: 250px;
+    top: 400px;
     width: 100%;
 }
 
