@@ -1,3 +1,10 @@
 body {
     background-color: coral;
 }
+
+
+/* Clase para controlar pagina actual */
+
+.noVisibility {
+    display: none;
+}
