@@ -7,7 +7,7 @@ body {
     background-color: rgb(251, 11, 11);
 }
 
-#section2,#section3{
+#section2,#section1{
     display: none;
 }
 
@@ -71,7 +71,7 @@ body {
     margin: 1%;
 }
 
-#section1 .button{
+#section1 .button, #section3 .button{
     margin: auto;
 }
 
