@@ -4,6 +4,9 @@ let currentPage = 0;
 let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
 let s3 = document.getElementById("section3");
+let botones = document.getElementsByClassName("menuButton");
+let valores = document.getElementsByClassName("text");
+const playerBoards = document.getElementsByClassName('boxText');
 
 
 //Creamos funcion para cambiar de pagina que tendra dos posible valores ( 0 para retroceder , 1 para avanzar)
@@ -70,6 +73,91 @@ function changeDom() {
     }
 
 }
+
+/* ------- Funcionalidades Section 1 -------- */
+
+//Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
+//dado que sera usado en las section 2 y 3
+var players = [];
+
+//De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
+//Aqui el Enter en este elemento añadira un nuevo player
+valores[0].addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        addPlayer();
+    }
+})
+
+function readFile(e) {
+
+}
+
+function addPlayer() {
+    //Borramos el texto predefinido en el tablero
+    if (players.length < 1) {
+        playerBoards[0].innerText = "";
+    }
+
+    //Recibimos el valor del input y lo introducimos a players
+    let valor = valores[0].value;
+    //Comprobamos el tamaño del nombre para evitar missclick
+    if (valor.length < 2) {
+        return 'Nombre no valido'
+    }
+    players.push(valor);
+
+    //Convertimos el valor a un textNode y creamos una nueva etiqueta para juntar ambos
+    valor = document.createTextNode(valor);
+    let player = document.createElement('p');
+    player.appendChild(valor);
+
+    //Añadimos atributos a nuestras etiquetas
+    player.setAttribute("ondblclick", "modifyPlayer(this)");
+    player.setAttribute("class", "mod")
+    //Agregamos el elemento al div boxText de la section 1
+    playerBoards[0].appendChild(player)
+}
+
+//Recoge el valor, lo busca en el array y lo sobreescribe mas tarde
+function modifyPlayer(player) {
+    if (!player.isContentEditable) {
+        //Aqui tenemos el valor precambio
+        let valor = player.textContent;
+        player.setAttribute("contentEditable", "true")
+        let arrayNumber = players.indexOf(valor);
+        console.log(arrayNumber)
+
+        //Aqui tendremos el valor postcambio
+        if (player.isContentEditable) {
+            player.addEventListener("keydown", function (e) {
+                if (e.keyCode === 13) {
+                    player.removeAttribute("contentEditable")
+                    valor = player.textContent;
+                    players[arrayNumber] = valor;
+                }
+            })
+        }
+    }
+}
+
+//Aun sin trabajar
+function removePlayer(player) {
+    player = player.textContent;
+
+    if (players.contains[player]) {
+        players.indexOf(player);
+    }
+
+    console.log('Proximamente');
+}
+
+//Esta funcion eliminaria todos los players tanto en el array como en el boxText
+function removeAll() {
+    players = [];
+
+    while (playerBoards[0].firstChild) {
+        playerBoards[0].removeChild(playerBoards[0].firstChild);
+    }
 //Funcionalidad tips en mouseOver
 //Se hace que aparezca el tip en mouseOver y desaparezca en mouseLeft
 function tipUpload(behavior) {
