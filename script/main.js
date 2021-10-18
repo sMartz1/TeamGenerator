@@ -70,4 +70,16 @@ function changeDom() {
     }
 
 }
-//
+//Funcionalidad tips en mouseOver
+//Se hace que aparezca el tip en mouseOver y desaparezca en mouseLeft
+function tipUpload(behavior) {
+    let p = document.getElementById("tip-Upload");
+    if (!behavior) {
+        p.classList.add("noVisibility");
+    } else {
+
+        p.classList.remove("noVisibility");
+    }
+
+
+}

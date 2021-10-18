@@ -13,6 +13,9 @@ body {
     body {
         padding: 0px;
     }
+    #tip-Upload {
+        display: none;
+    }
 }
 
 
@@ -95,14 +98,41 @@ body {
     height: 50px;
     border-radius: 30px;
     color: white;
-    transition: 1s;
+    transition: 0.5s;
     cursor: pointer;
+}
+
+.file-button {
+    background: url("../images/uploadW.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.file-button:hover {
+    background: url("../images/uploadP.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid rgba(238, 0, 234, 1) 2px;
+    background-blend-mode: soft-light;
 }
 
 .menuButton:hover,
 .button-nav:hover {
     border: solid rgba(238, 0, 234, 0.5) 2px;
     color: rgba(238, 0, 234, 0.5);
+}
+
+#tip-Upload {
+    position: absolute;
+    margin-left: 350px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30%;
+    color: rgba(238, 0, 234, 0.5);
+    background-color: rgba(238, 234, 234, 0.5);
+    border-radius: 25px;
+    padding: 10px 10px;
 }
 
 .buttonContainer {
