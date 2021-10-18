@@ -9,7 +9,6 @@ body {
     padding: 20px 100px;
 }
 
-
 @media (max-width: 600px) {
     body {
         padding: 0px;
@@ -29,8 +28,8 @@ body {
     border: solid rgba(238, 234, 234, 0.2) 1px;
     margin: 2%;
     padding: 1%;
+    min-height: 400px;
     border-radius: 10px;
-    min-height: 600px;
 }
 
 .control {
@@ -56,10 +55,42 @@ body {
     margin-top: 2%;
     width: 95%;
     color: black;
-    background-color: rgba(238, 234, 234, 0.9);
-    border-radius: 30px;
-    box-shadow: 4px 6px 5px rgba(199, 195, 195, 0.678);
 }
+
+
+/*Estilos P player */
+
+.player-card {
+    background-color: rgb(222, 222, 222, 0.2);
+    border: solid rgb(222, 222, 222, 0.8) 1px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 23px;
+    color: whitesmoke;
+    padding-left: 5px;
+    padding-right: 30px;
+    font-size: 100%;
+    border-radius: 5px 0px 0px 5px;
+    margin-right: 30px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.player-card::after {
+    position: absolute;
+    content: "x";
+    background-color: tomato;
+    text-align: center;
+    height: 23px;
+    width: 23px;
+    text-shadow: black;
+    margin-top: -1px;
+    margin-left: 20px;
+    border-radius: 0px 5px 5px 0px;
+    border: solid tomato 1px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+/****/
 
 .labels {
     font-size: 300%;
