@@ -158,6 +158,7 @@ function removeAll() {
     while (playerBoards[0].firstChild) {
         playerBoards[0].removeChild(playerBoards[0].firstChild);
     }
+}
 //Funcionalidad tips en mouseOver
 //Se hace que aparezca el tip en mouseOver y desaparezca en mouseLeft
 function tipUpload(behavior) {
