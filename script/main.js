@@ -91,6 +91,10 @@ valores[0].addEventListener("keydown", function (e) {
     }
 })
 
+function readFile(e) {
+
+}
+
 function addPlayer() {
     //Borramos el texto predefinido en el tablero
     if (players.length < 1) {
