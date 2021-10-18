@@ -18,8 +18,8 @@
                 <p id="tip-Upload" class="noVisibility">Puedes subir un archivo .txt con el listado de personas.</p>
             </div>
             <input class="text" type="text" name="" id="">
-           <div class="menuButton" ondblclick="addPlayer()">+</div>
-            
+            <div class="menuButton" ondblclick="addPlayer()">+</div>
+
         </div>
 
         <!--Aqui se deberian mostrar los nombres mientras se van añadiendo-->
@@ -30,8 +30,27 @@
     </section>
 
     <section class="section noVisibility" id="section2">
-        <p class="labels">Define el tamaño de los equipos: </p>
-        <input class="text" type="text" />
+        <!--Esto contendra ambas opciones-->
+        <div class="form">
+            <div class="interiorForm">
+                <p class="labels">Tamaño equipos</p>
+                <!--Este select se rellenara de forma dinamica desde el JS-->
+                <select class="selects">
+                    <option class="options" value="1">valor opcional</option>
+                    <option value="2">valor opcional</option>
+                    <option value="3">valor opcional</option>
+                </select>
+            </div>
+            <div class="interiorForm">
+                <p class="labels">Equipos totales</p>
+                <!--Este select se rellenara de forma dinamica desde el JS-->
+                <select class="selects">
+                    <option value="1">valor opcional</option>
+                    <option value="2">valor opcional</option>
+                    <option value="3">valor opcional</option>
+                </select>
+            </div>
+        </div>
 
         <!--Botones-->
         <div class="buttonContainer">
