@@ -75,9 +75,11 @@ body {
 }
 
 .player-card::after {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
     position: absolute;
     content: "x";
-    background-color: tomato;
+    background-color: #E74C3C;
     text-align: center;
     height: 23px;
     width: 23px;
@@ -85,8 +87,14 @@ body {
     margin-top: -1px;
     margin-left: 20px;
     border-radius: 0px 5px 5px 0px;
-    border: solid tomato 1px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: solid #E74C3C 1px;
+}
+
+.player-card:hover::after {
+    cursor: pointer;
+    color: #34495E;
+    background-color: #F1C40F;
+    border: solid #F1C40F 1px;
 }
 
 
