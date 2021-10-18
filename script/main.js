@@ -8,8 +8,6 @@ let botones = document.getElementsByClassName("menuButton");
 let valores = document.getElementsByClassName("text");
 const playerBoards = document.getElementsByClassName('boxText');
 
-console.log(s1);
-
 
 //Creamos funcion para cambiar de pagina que tendra dos posible valores ( 0 para retroceder , 1 para avanzar)
 //Dado que tenemos 3 secciones los valores son entre 0-2 pero 
@@ -75,7 +73,6 @@ function changeDom() {
     }
 
 }
-
 
 /* ------- Funcionalidades Section 1 -------- */
 
@@ -161,4 +158,16 @@ function removeAll() {
     while (playerBoards[0].firstChild) {
         playerBoards[0].removeChild(playerBoards[0].firstChild);
     }
+//Funcionalidad tips en mouseOver
+//Se hace que aparezca el tip en mouseOver y desaparezca en mouseLeft
+function tipUpload(behavior) {
+    let p = document.getElementById("tip-Upload");
+    if (!behavior) {
+        p.classList.add("noVisibility");
+    } else {
+
+        p.classList.remove("noVisibility");
+    }
+
+
 }

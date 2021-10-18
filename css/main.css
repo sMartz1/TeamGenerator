@@ -1,24 +1,39 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
 
 body {
-    background-color: rgb(251, 11, 11);
+    background: linear-gradient(to left, #36d1dc, #5b86e5);
+    /* background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);*/
+    padding: 20px 100px;
 }
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 0px;
+    }
+    #tip-Upload {
+        display: none;
+    }
+}
+
 
 /* Secciones principales */
-.section{
+
+.section {
     display: flex;
     flex-direction: column;
-    background-color: rgba(238, 234, 234, 0.908);
-    margin:2%;
+    background-color: rgba(238, 234, 234, 0.2);
+    border: solid rgba(238, 234, 234, 0.2) 1px;
+    margin: 2%;
     padding: 1%;
     border-radius: 10px;
-    min-height: 640px;
+    min-height: 600px;
 }
 
-.control{
+.control {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -26,7 +41,7 @@ body {
     width: 100%;
 }
 
-.text{
+.text {
     border-radius: 20px;
     border: 0px transparent;
     box-shadow: 1px 1px 3px grey;
@@ -34,17 +49,19 @@ body {
     padding: 1%;
 }
 
-.boxText{
+.boxText {
+    display: flex;
+    justify-content: center;
     margin: auto;
     margin-top: 2%;
     width: 95%;
-    background-color: white;
-    min-height: 450px;
+    color: black;
+    background-color: rgba(238, 234, 234, 0.9);
     border-radius: 30px;
     box-shadow: 4px 6px 5px rgba(199, 195, 195, 0.678);
 }
 
-.labels{
+.labels {
     font-size: 300%;
     font-weight: bolder;
     margin: 1%;
@@ -52,38 +69,74 @@ body {
 
 
 /* Estilos botones */
-.button{
+
+.button {
     display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 0, 0, 0.678);
     color: white;
     font-size: 720%;
     width: 150px;
     height: 50px;
-    border-radius: 30px;
+    border-radius: 10px;
     padding-bottom: 1%;
     margin: 1%;
 }
 
-#section1 .button, #section3 .button{
+#section1 .button,
+#section3 .button {
     margin: auto;
 }
 
-.menuButton{
+.menuButton {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
-    font-size: 150%;
-    background-color: rgba(255, 0, 0, 0.678);
-    width: 150px;
+    font-size: 200%;
+    border: solid rgba(238, 234, 234, 0.9) 2px;
+    width: 50px;
+    height: 50px;
     border-radius: 30px;
     color: white;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
-.buttonContainer{
+.file-button {
+    background: url("../images/uploadW.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.file-button:hover {
+    background: url("../images/uploadP.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid rgba(238, 0, 234, 1) 2px;
+    background-blend-mode: soft-light;
+}
+
+.menuButton:hover,
+.button-nav:hover {
+    border: solid rgba(238, 0, 234, 0.5) 2px;
+    color: rgba(238, 0, 234, 0.5);
+}
+
+#tip-Upload {
+    position: absolute;
+    margin-left: 350px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30%;
+    color: rgba(238, 0, 234, 0.5);
+    background-color: rgba(238, 234, 234, 0.5);
+    border-radius: 25px;
+    padding: 10px 10px;
+}
+
+.buttonContainer {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -92,9 +145,21 @@ body {
     width: 100%;
 }
 
+.button-nav {
+    font-size: 200%;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: solid rgba(238, 234, 234, 0.9) 2px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    padding-bottom: 0px;
+    transition: 1s;
+}
+
+
 /* Clase para controlar pagina actual */
 
 .noVisibility {
     display: none;
 }
-
