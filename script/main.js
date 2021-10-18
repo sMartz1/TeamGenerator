@@ -86,8 +86,18 @@ function changeDom() {
 var players = [];
 
 function addPlayer() {
+    //Borramos el texto predefinido en el tablero
+    if (players.length < 1) {
+        playerBoards[0].innerText = "";
+    }
+
     //Recibimos el valor del input y lo introducimos a players
     let valor = valores[0].value;
+
+    //Comprobamos el tamaño del nombre para evitar missclick
+    if (valor.length < 2) {
+        return 'Nombre no valido'
+    }
     players.push(valor);
 
     //Convertimos el valor a un textNode y creamos una nueva etiqueta para juntar ambos
