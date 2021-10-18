@@ -78,12 +78,18 @@ function changeDom() {
 
 
 /* ------- Funcionalidades Section 1 -------- */
-//Añadir funcionalidad tecla ENTER para agregar usuario (y a ser posible terminar de editarlo tambien)
-//Necesito usar un evento para comenzar a editar el nombre y un evento para terminar de editarlo y guardar definitivamente el valor
 
 //Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
 //dado que sera usado en las section 2 y 3
 var players = [];
+
+//De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
+//Aqui el Enter en este elemento añadira un nuevo player
+valores[0].addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        addPlayer();
+    }
+})
 
 function addPlayer() {
     //Borramos el texto predefinido en el tablero
@@ -93,7 +99,6 @@ function addPlayer() {
 
     //Recibimos el valor del input y lo introducimos a players
     let valor = valores[0].value;
-
     //Comprobamos el tamaño del nombre para evitar missclick
     if (valor.length < 2) {
         return 'Nombre no valido'
@@ -106,23 +111,32 @@ function addPlayer() {
     player.appendChild(valor);
 
     //Añadimos atributos a nuestras etiquetas
-    player.setAttribute("onclick", "modifyPlayer(this)");
-
+    player.setAttribute("ondblclick", "modifyPlayer(this)");
+    player.setAttribute("class", "mod")
     //Agregamos el elemento al div boxText de la section 1
     playerBoards[0].appendChild(player)
 }
 
-//Primera parte: recoge el valor de la etiqueta antes del cambio, lo busca y lo elimina
+//Recoge el valor, lo busca en el array y lo sobreescribe mas tarde
 function modifyPlayer(player) {
-    player.setAttribute("contentEditable", "true");
-    player = player.textContent;
-    players.splice(players.indexOf(player), 1);
-}
+    if (!player.isContentEditable) {
+        //Aqui tenemos el valor precambio
+        let valor = player.textContent;
+        player.setAttribute("contentEditable", "true")
+        let arrayNumber = players.indexOf(valor);
+        console.log(arrayNumber)
 
-//Segunda parte: recoge el valor editado y lo pushea al array
-function setModify(player) {
-    player = player.textContent;
-    players.push(player);
+        //Aqui tendremos el valor postcambio
+        if (player.isContentEditable) {
+            player.addEventListener("keydown", function (e) {
+                if (e.keyCode === 13) {
+                    player.removeAttribute("contentEditable")
+                    valor = player.textContent;
+                    players[arrayNumber] = valor;
+                }
+            })
+        }
+    }
 }
 
 //Aun sin trabajar
