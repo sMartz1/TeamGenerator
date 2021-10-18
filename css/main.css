@@ -74,6 +74,10 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.player-card:hover {
+    background-color: rgb(222, 222, 222, 0.4);
+}
+
 .player-card::after {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: lighter;
