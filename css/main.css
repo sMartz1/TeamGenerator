@@ -74,6 +74,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-direction: column;
     gap: 5%;
     width: 80%;
     margin: auto;
@@ -96,7 +97,7 @@ body {
 
 .labels {
     margin: auto;
-    font-size: 30px;
+    font-size: 50px;
     margin-top: 30px;
     font-weight: lighter;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -106,25 +107,81 @@ body {
     padding: 7%;
 }
 
-.selects{
-    appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
+.slide{
+    width: 60px;
+    height: 20px;
+    align-self: center;
+    text-align: center;
+    background-color: rgb(240, 235, 236);
+    border-radius: 30px;
     margin: auto;
-    padding: auto;
+    margin-bottom: 3%;
+}
+
+.buttonSlider{
+    position: relative;
+    border-radius: 50%;
+    top: 6px;
+    left: 5px;
+    width: 19px;
+    height: 19px;
+    background-color: rgb(192, 187, 187);
+    z-index: 2;
+}
+
+.borderSlider{
+    position: relative;
+    top: -5px;
+    left: 0px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(211, 208, 205);
+    z-index: 1;
+}
+
+.selects{
+    overflow: auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: transparent;
-    border: 1px solid white;
+    border: solid rgba(238, 234, 234, 0.2) 2px;
+    width: 100%;
+    height: 200px;
     color: white;
-    padding: 2% 10%;
     font-size: 20px;
 }
 
-.selects::content{
-    appearance: none;
-    background: transparent;
+.titles{
+    width: 99%;
+    text-align: center;
+    font-weight: bolder;
+    margin:1%;
 }
 
+.options{
+    overflow: auto;
+    text-align: center;
+    margin:auto;
+    max-height: 100%;
+    border: 1px solid white;
+    width: 92%;
+    height: auto;
+}
+
+/* Estilos del scroll */
+.selects::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+}
+
+.selects::-webkit-scrollbar-thumb{
+    background: rgb(255, 255, 255);
+}
+
+.selects::-webkit-scrollbar-track{
+    border-radius: 2px;
+}
 
 /* Estilos botones */
 
