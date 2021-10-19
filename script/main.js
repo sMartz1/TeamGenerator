@@ -76,9 +76,7 @@ function changeDom() {
 
 /* ------- Funcionalidades Section 1 -------- */
 
-//Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
-//dado que sera usado en las section 2 y 3
-var players = [];
+
 
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
@@ -117,7 +115,9 @@ function getPlayersByFile(e) {
 //Añadimos Listener onChange para el input
 document.getElementById('inputF').addEventListener('change', getPlayersByFile, false);
 
-
+//Este array sera el que contendra todos los nombre, debe ser declarado en el cuerpo
+//dado que sera usado en las section 2 y 3
+let players = [];
 
 function addPlayer() {
     //Borramos el texto predefinido en el tablero
@@ -133,16 +133,32 @@ function addPlayer() {
     }
     players.push(valor);
 
+    //IMPORTANTE modifico creacion de elementos en base a nuevo diseño.
+    //Necesaria estructura <div class="player"><p>$NAME</p><span>X</span></div>
+
+    //Se crea div contenedor de la card
+    let container = document.createElement('div');
+    container.classList.add("player");
+
+    //Se crea P para contener el nombre.
+    let player = document.createElement('p');
     //Convertimos el valor a un textNode y creamos una nueva etiqueta para juntar ambos
     valor = document.createTextNode(valor);
-    let player = document.createElement('p');
     player.appendChild(valor);
-
     //Añadimos atributos a nuestras etiquetas
     player.setAttribute("ondblclick", "modifyPlayer(this)");
-    player.setAttribute("class", "mod")
-        //Agregamos el elemento al div boxText de la section 1
-    playerBoards[0].appendChild(player)
+    //player.setAttribute("class", "mod"); Dejo comentado por si necesitamos añadir clase en p en un futuro
+
+    //Se crea span
+    let close = document.createElement("span");
+    close.innerHTML = "X";
+
+    //Construccion de card con elementos anteriores
+    container.appendChild(player);
+    container.appendChild(close);
+
+    //Agregamos el elemento al div boxText de la section 1
+    playerBoards[0].appendChild(container);
 }
 
 //Recoge el valor, lo busca en el array y lo sobreescribe mas tarde
