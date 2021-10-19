@@ -82,15 +82,42 @@ var players = [];
 
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function (e) {
+valores[0].addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
         addPlayer();
     }
 })
 
-function readFile(e) {
+//Funcion que devuelve array de usuarios en base a archivo .txt seleccionado.
 
+function getPlayersByFile(e) {
+    //Cogemos fichero seleccionado
+    let file = e.target.files[0];
+    if (!file) {
+        //En caso de que el fichero no exista salimos.
+        return;
+    }
+    //Usamos file reader para acceder al archivo
+    let reader = new FileReader();
+    //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
+    reader.onload = function(e) {
+            //en .result encontramos la string resultante de leer el archivo.
+            let content = e.target.result;
+            //Parto por saltos de linea los nombres para recibirlos como array
+            let arrGenerado = content.split(/\r?\n/g);
+            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+            //De momento dejamos en log el array
+            console.log(arrGenerado);
+
+        }
+        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+    reader.readAsText(file);
 }
+
+//Añadimos Listener onChange para el input
+document.getElementById('inputF').addEventListener('change', getPlayersByFile, false);
+
+
 
 function addPlayer() {
     //Borramos el texto predefinido en el tablero
@@ -114,7 +141,7 @@ function addPlayer() {
     //Añadimos atributos a nuestras etiquetas
     player.setAttribute("ondblclick", "modifyPlayer(this)");
     player.setAttribute("class", "mod")
-    //Agregamos el elemento al div boxText de la section 1
+        //Agregamos el elemento al div boxText de la section 1
     playerBoards[0].appendChild(player)
 }
 
@@ -129,7 +156,7 @@ function modifyPlayer(player) {
 
         //Aqui tendremos el valor postcambio
         if (player.isContentEditable) {
-            player.addEventListener("keydown", function (e) {
+            player.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     player.removeAttribute("contentEditable")
                     valor = player.textContent;
@@ -139,6 +166,7 @@ function modifyPlayer(player) {
         }
     }
 }
+
 
 //Aun sin trabajar
 function removePlayer(player) {
