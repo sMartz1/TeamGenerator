@@ -5,7 +5,6 @@ let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
 let s3 = document.getElementById("section3");
 let botones = document.getElementsByClassName("menuButton");
-let valores = document.getElementsByClassName("text");
 const playerBoards = document.getElementsByClassName('boxText');
 
 
@@ -76,8 +75,8 @@ function changeDom() {
 
 /* ------- Funcionalidades Section 1 -------- */
 
-
-
+//Acceso a input de section 1.
+let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
 valores[0].addEventListener("keydown", function(e) {
@@ -105,11 +104,15 @@ function getPlayersByFile(e) {
             let arrGenerado = content.split(/\r?\n/g);
             //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
             //De momento dejamos en log el array
-            console.log(arrGenerado);
+            for (let i = 0; i < arrGenerado.length; i++) {
+                addPlayer(arrGenerado[i]);
+
+            }
 
         }
         //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
+    document.getElementById("inputF").value = "";
 }
 
 //Añadimos Listener onChange para el input
@@ -119,14 +122,22 @@ document.getElementById('inputF').addEventListener('change', getPlayersByFile, f
 //dado que sera usado en las section 2 y 3
 let players = [];
 
-function addPlayer() {
+function addPlayer(aux = "") {
     //Borramos el texto predefinido en el tablero
     if (players.length < 1) {
         playerBoards[0].innerText = "";
     }
+    let valor = "";
+    if (aux.length == 0) {
 
+        valor = valores[0].value;
+
+    } else {
+
+        valor = aux;
+    }
     //Recibimos el valor del input y lo introducimos a players
-    let valor = valores[0].value;
+
     //Comprobamos el tamaño del nombre para evitar missclick
     if (valor.length < 2) {
         return 'Nombre no valido'
@@ -146,12 +157,13 @@ function addPlayer() {
     valor = document.createTextNode(valor);
     player.appendChild(valor);
     //Añadimos atributos a nuestras etiquetas
-    player.setAttribute("ondblclick", "modifyPlayer(this)");
+    player.setAttribute("onclick", "modifyPlayer(this)");
     //player.setAttribute("class", "mod"); Dejo comentado por si necesitamos añadir clase en p en un futuro
 
     //Se crea span
     let close = document.createElement("span");
     close.innerHTML = "X";
+    close.setAttribute("onclick", "removePlayer(this)");
 
     //Construccion de card con elementos anteriores
     container.appendChild(player);
@@ -186,12 +198,15 @@ function modifyPlayer(player) {
 
 //Aun sin trabajar
 function removePlayer(player) {
-    player = player.textContent;
+    let pValue = player.parentNode.firstChild.innerHTML;
+    if (players.includes(pValue)) {
+        //Posicion de player en array
+        let posPlayer = players.indexOf(pValue);
+        players.splice(posPlayer, 1);
 
-    if (players.contains[player]) {
-        players.indexOf(player);
     }
-
+    //Eliminamos card.
+    let parent = player.parentNode.remove()
     console.log('Proximamente');
 }
 
