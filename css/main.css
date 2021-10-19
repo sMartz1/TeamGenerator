@@ -85,7 +85,26 @@ header {
     margin: auto;
     margin-top: 2%;
     width: 95%;
-    color: black;
+}
+
+.boxText>p {
+    margin-top: 10%;
+    color: rgb(256, 256, 256, 0.5);
+    animation-name: waitingUsers;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes waitingUsers {
+    0% {
+        color: rgb(256, 256, 256, 0.3);
+    }
+    50% {
+        color: rgb(256, 256, 256, 1);
+    }
+    100% {
+        color: rgb(256, 256, 256, 0.3);
+    }
 }
 
 .form {
