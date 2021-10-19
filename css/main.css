@@ -52,6 +52,15 @@ header {
     border-radius: 10px;
 }
 
+#section1 .button,
+#section3 .button {
+    margin: auto;
+}
+
+#section2 {
+    margin-top: -80px;
+}
+
 .control {
     display: flex;
     flex-direction: row-reverse;
@@ -79,8 +88,7 @@ header {
     color: black;
 }
 
-
-.form{
+.form {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -94,7 +102,7 @@ header {
     border: solid rgba(238, 234, 234, 0.2) 2px;
 }
 
-.interiorForm{
+.interiorForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -104,7 +112,6 @@ header {
     min-height: 300px;
     border: solid rgba(238, 234, 234, 0.2) 2px;
 }
-
 
 
 /*Estilos P player */
@@ -160,27 +167,26 @@ header {
 .labels {
     margin: auto;
     font-size: 50px;
-    margin-top: 30px;
     font-weight: lighter;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     color: white;
-    background-color:transparent;
+    background-color: transparent;
     padding: 7%;
 }
 
-.slide{
+.slide {
     width: 60px;
     height: 20px;
     align-self: center;
     text-align: center;
     background-color: rgb(240, 235, 236);
     border-radius: 30px;
-    margin: auto;
+    margin-top: -2%;
     margin-bottom: 3%;
 }
 
-.buttonSlider{
+.buttonSlider {
     position: relative;
     border-radius: 50%;
     top: 6px;
@@ -191,7 +197,7 @@ header {
     z-index: 2;
 }
 
-.borderSlider{
+.borderSlider {
     position: relative;
     top: -5px;
     left: 0px;
@@ -202,7 +208,7 @@ header {
     z-index: 1;
 }
 
-.selects{
+.selects {
     overflow: auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: transparent;
@@ -213,37 +219,40 @@ header {
     font-size: 20px;
 }
 
-.titles{
+.titles {
     width: 99%;
     text-align: center;
     font-weight: bolder;
-    margin:1%;
+    margin: 1%;
 }
 
-.options{
+.options {
     overflow: auto;
     text-align: center;
-    margin:auto;
+    margin: auto;
     max-height: 100%;
     border: 1px solid white;
     width: 92%;
     height: auto;
 }
 
+
 /* Estilos del scroll */
-.selects::-webkit-scrollbar{
+
+.selects::-webkit-scrollbar {
     width: 5px;
     height: 5px;
     background-color: transparent;
 }
 
-.selects::-webkit-scrollbar-thumb{
+.selects::-webkit-scrollbar-thumb {
     background: rgb(255, 255, 255);
 }
 
-.selects::-webkit-scrollbar-track{
+.selects::-webkit-scrollbar-track {
     border-radius: 2px;
 }
+
 
 /* Estilos botones */
 
@@ -259,11 +268,6 @@ header {
     border-radius: 10px;
     padding-bottom: 1%;
     margin: 1%;
-}
-
-#section1 .button,
-#section3 .button {
-    margin: auto;
 }
 
 .menuButton {
