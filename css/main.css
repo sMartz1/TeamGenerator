@@ -66,11 +66,13 @@ header {
     box-shadow: 1px 1px 3px grey;
     font-size: 100%;
     padding: 1%;
+    outline: none;
 }
 
 .boxText {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: auto;
     margin-top: 2%;
     width: 95%;
@@ -82,6 +84,8 @@ header {
 
 .player {
     display: flex;
+    margin-right: 16px;
+    margin-top: 5px;
 }
 
 .boxText>.player>p {
