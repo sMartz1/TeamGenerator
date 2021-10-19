@@ -16,6 +16,9 @@ body {
     #tip-Upload {
         display: none;
     }
+    header {
+        margin-bottom: 40px;
+    }
 }
 
 
@@ -25,6 +28,7 @@ header {
     display: flex;
     flex-flow: column;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 .sub-logo {
@@ -221,8 +225,7 @@ header {
 
 .file-button input[type="file"] {
     opacity: 0;
-    width: 200px;
-    height: 200px;
+    height: 50px;
     display: inline-block;
 }
 
