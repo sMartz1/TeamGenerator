@@ -15,9 +15,8 @@
 body {
     background: linear-gradient(to left, #36d1dc, #5b86e5);
     /* background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);*/
-    padding: 20px 100px;
+    padding: 40px 140px;
 }
-
 
 @media (max-width: 600px) {
     body {
@@ -26,6 +25,26 @@ body {
     #tip-Upload {
         display: none;
     }
+    header {
+        margin-bottom: 40px;
+    }
+}
+
+
+/*Estilos de cabecera con logo */
+
+header {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.sub-logo {
+    margin-left: 285px;
+    font-size: 63%;
+    color: antiquewhite;
+    font-family: sans-serif;
 }
 
 
@@ -38,8 +57,8 @@ body {
     border: solid rgba(238, 234, 234, 0.2) 1px;
     margin: 2%;
     padding: 1%;
+    min-height: 400px;
     border-radius: 10px;
-    min-height: 600px;
 }
 
 .control {
@@ -56,19 +75,19 @@ body {
     box-shadow: 1px 1px 3px grey;
     font-size: 100%;
     padding: 1%;
+    outline: none;
 }
 
 .boxText {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: auto;
     margin-top: 2%;
     width: 95%;
     color: black;
-    background-color: rgba(238, 234, 234, 0.9);
-    border-radius: 30px;
-    box-shadow: 4px 6px 5px rgba(199, 195, 195, 0.678);
 }
+
 
 .form{
     display: flex;
@@ -94,6 +113,58 @@ body {
     min-height: 300px;
     border: solid rgba(238, 234, 234, 0.2) 2px;
 }
+
+
+
+/*Estilos P player */
+
+.player {
+    display: flex;
+    margin-right: 16px;
+    margin-top: 5px;
+}
+
+.boxText>.player>p {
+    background-color: rgb(222, 222, 222, 0.2);
+    border: solid rgb(222, 222, 222, 0.8) 1px;
+    border-right: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 23px;
+    color: whitesmoke;
+    padding-left: 5px;
+    padding-right: 18px;
+    padding-bottom: 4px;
+    font-size: 120%;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.boxText>.player>p:hover {
+    background-color: rgb(222, 222, 222, 0.4);
+}
+
+.boxText>.player>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(255, 114, 122);
+    height: 28px;
+    width: 25px;
+    text-shadow: 0 0 black;
+    border-radius: 0px 5px 5px 0px;
+    border: solid rgb(255, 114, 122) 1px;
+}
+
+.boxText>.player>span:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #b61d1d;
+    border: solid #b61d1d 1px;
+}
+
+
+/****/
 
 .labels {
     margin: auto;
@@ -268,6 +339,15 @@ body {
     font-weight: lighter;
     padding-bottom: 0px;
     transition: 1s;
+}
+
+
+/*Custom input file*/
+
+.file-button input[type="file"] {
+    opacity: 0;
+    height: 50px;
+    display: inline-block;
 }
 
 
