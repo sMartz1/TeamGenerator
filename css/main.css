@@ -85,7 +85,27 @@ header {
     margin: auto;
     margin-top: 2%;
     width: 95%;
+    max-height: 250px;
+    overflow-y: scroll;
+    box-shadow: 0px 0px 25px inset rgba(206, 208, 209, 0.308);
+    border-radius: 20px;
 }
+
+/*scroll BOXTEXT*/
+.boxText::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+}
+
+.boxText::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+}
+
+.boxText::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+/*----------------*/
 
 .boxText>p {
     margin-top: 10%;
