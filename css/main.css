@@ -91,7 +91,9 @@ header {
     border-radius: 20px;
 }
 
+
 /*scroll BOXTEXT*/
+
 .boxText::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -105,10 +107,13 @@ header {
 .boxText::-webkit-scrollbar-track {
     border-radius: 2px;
 }
-/*----------------*/
+
+
+/*-----Animacion waiting users en p ------*/
 
 .boxText>p {
-    margin-top: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
     color: rgb(256, 256, 256, 0.5);
     animation-name: waitingUsers;
     animation-duration: 2s;
