@@ -79,7 +79,7 @@ function changeDom() {
 let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function(e) {
+valores[0].addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         addPlayer();
     }
@@ -97,20 +97,20 @@ function getPlayersByFile(e) {
     //Usamos file reader para acceder al archivo
     let reader = new FileReader();
     //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
-    reader.onload = function(e) {
-            //en .result encontramos la string resultante de leer el archivo.
-            let content = e.target.result;
-            //Parto por saltos de linea los nombres para recibirlos como array
-            let arrGenerado = content.split(/\r?\n/g);
-            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
-            //De momento dejamos en log el array
-            for (let i = 0; i < arrGenerado.length; i++) {
-                addPlayer(arrGenerado[i]);
-
-            }
+    reader.onload = function (e) {
+        //en .result encontramos la string resultante de leer el archivo.
+        let content = e.target.result;
+        //Parto por saltos de linea los nombres para recibirlos como array
+        let arrGenerado = content.split(/\r?\n/g);
+        //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+        //De momento dejamos en log el array
+        for (let i = 0; i < arrGenerado.length; i++) {
+            addPlayer(arrGenerado[i]);
 
         }
-        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+
+    }
+    //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
     document.getElementById("inputF").value = "";
 }
@@ -175,28 +175,37 @@ function addPlayer(aux = "") {
 
 //Recoge el valor, lo busca en el array y lo sobreescribe mas tarde
 function modifyPlayer(player) {
+
     if (!player.isContentEditable) {
-        //Aqui tenemos el valor precambio
         let valor = player.textContent;
+        var arrayNumber = players.indexOf(valor);
         player.setAttribute("contentEditable", "true")
-        let arrayNumber = players.indexOf(valor);
-        console.log(arrayNumber)
 
         //Aqui tendremos el valor postcambio
         if (player.isContentEditable) {
-            player.addEventListener("keydown", function(e) {
+
+            //Evento que detectara si el usuario pulsa ENTER
+            player.addEventListener("keydown", function (e) {
                 if (e.keyCode === 13) {
                     player.removeAttribute("contentEditable")
                     valor = player.textContent;
                     players[arrayNumber] = valor;
                 }
             })
+
+            //Evento que controlara el valor si el elemento pierde el foco
+            player.addEventListener('blur', function (e) {
+                player.addEventListener
+                player.removeAttribute("contentEditable")
+                valor = player.textContent;
+                players[arrayNumber] = valor;
+            })
         }
     }
 }
 
 
-//Aun sin trabajar
+//Borra al player
 function removePlayer(player) {
     let pValue = player.parentNode.firstChild.innerHTML;
     if (players.includes(pValue)) {
@@ -207,7 +216,6 @@ function removePlayer(player) {
     }
     //Eliminamos card.
     let parent = player.parentNode.remove()
-    console.log('Proximamente');
 }
 
 //Esta funcion eliminaria todos los players tanto en el array como en el boxText
