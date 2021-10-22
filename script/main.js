@@ -306,7 +306,6 @@ function generateOptionHTML(num) {
     let divElement = document.createElement("div");
     divElement.classList.add("options");
     divElement.innerHTML = num;
-    divElement.setAttribute('onclick', 'probador()')
     return divElement;
 }
 
