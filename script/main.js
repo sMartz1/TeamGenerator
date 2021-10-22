@@ -387,7 +387,7 @@ function selectOption(option) {
     if (padre == 'select-player') {
         makeByPlayers(value);
     } else {
-        console.log('hijo de selector por equipos');
+        makeByTeams(value);
     }
 }
 
@@ -406,6 +406,7 @@ function drawTeam() {
 
 //Esta funcion los repartira por jugadores
 function makeByPlayers(value) {
+    //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
     removeAll(1);
     let randoms = randomTeams();
     let index = 0;
@@ -430,5 +431,23 @@ function makeByPlayers(value) {
 
 //Esta los repartira por equipos
 function makeByTeams(value) {
+    removeAll(1);
+    let randoms = randomTeams();
+    let index = 0;
 
+    for (let i = 0; i < value; i++) {
+        let divElement = drawTeam(); //Dibujamos equipo
+
+        for (let j = 0; j < players.length / value; j++) {
+            if (randoms[index] == undefined) {
+                break;
+            }
+            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
+            divElement.appendChild(player)
+            index++;
+        }
+
+        playerBoards[1].appendChild(divElement);
+
+    }
 }
