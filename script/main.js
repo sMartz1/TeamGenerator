@@ -36,6 +36,7 @@ function changePage(option) {
 function changeDom() {
 
     switch (currentPage) {
+        //Section 1
         case 0:
             if (!s2.classList.contains("noVisibility")) {
                 s2.classList.add("noVisibility");
@@ -46,7 +47,10 @@ function changeDom() {
             s1.classList.remove("noVisibility");
             break;
 
+            //Section 2
         case 1:
+            //Actualizamos opciones siempre que se vaya a visualizar section2
+            createOptions();
             if (!s1.classList.contains("noVisibility")) {
                 s1.classList.add("noVisibility");
             }
@@ -55,7 +59,7 @@ function changeDom() {
             }
             s2.classList.remove("noVisibility");
             break;
-
+            //Section 3
         case 2:
             if (!s1.classList.contains("noVisibility")) {
                 s1.classList.add("noVisibility");
@@ -79,7 +83,7 @@ function changeDom() {
 let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function (e) {
+valores[0].addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
         addPlayer();
     }
@@ -97,20 +101,20 @@ function getPlayersByFile(e) {
     //Usamos file reader para acceder al archivo
     let reader = new FileReader();
     //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
-    reader.onload = function (e) {
-        //en .result encontramos la string resultante de leer el archivo.
-        let content = e.target.result;
-        //Parto por saltos de linea los nombres para recibirlos como array
-        let arrGenerado = content.split(/\r?\n/g);
-        //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
-        //De momento dejamos en log el array
-        for (let i = 0; i < arrGenerado.length; i++) {
-            addPlayer(arrGenerado[i]);
+    reader.onload = function(e) {
+            //en .result encontramos la string resultante de leer el archivo.
+            let content = e.target.result;
+            //Parto por saltos de linea los nombres para recibirlos como array
+            let arrGenerado = content.split(/\r?\n/g);
+            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+            //De momento dejamos en log el array
+            for (let i = 0; i < arrGenerado.length; i++) {
+                addPlayer(arrGenerado[i]);
+
+            }
 
         }
-
-    }
-    //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
     document.getElementById("inputF").value = "";
 }
@@ -185,7 +189,7 @@ function modifyPlayer(player) {
         if (player.isContentEditable) {
 
             //Evento que detectara si el usuario pulsa ENTER
-            player.addEventListener("keydown", function (e) {
+            player.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     player.removeAttribute("contentEditable")
                     valor = player.textContent;
@@ -194,7 +198,7 @@ function modifyPlayer(player) {
             })
 
             //Evento que controlara el valor si el elemento pierde el foco
-            player.addEventListener('blur', function (e) {
+            player.addEventListener('blur', function(e) {
                 player.addEventListener
                 player.removeAttribute("contentEditable")
                 valor = player.textContent;
@@ -238,4 +242,96 @@ function tipUpload(behavior) {
     }
 
 
+}
+
+//Funcionalidad para definir las opciones disponibles en section 2.
+//Los equipos pueden ser de un minimo de 2 participantes.
+//Tener variable con que opciones quedarian desequilibrados los equipos.
+function createOptions() {
+    let playerL = players.length;
+    let optionsT = generateByTeamNumber(playerL);
+    let optionsP = generateByPlayerNumber(playerL);
+    //Limpiamos todas las opciones
+    clearOptions();
+
+    let teamContainer = document.getElementById("select-team");
+    for (let index = 0; index < optionsT.length; index++) {
+        teamContainer.append(optionsT[index]);
+    }
+
+    let playerContainer = document.getElementById("select-player");
+    for (let index = 0; index < optionsP.length; index++) {
+        playerContainer.append(optionsP[index]);
+    }
+
+
+
+}
+
+
+//Generar lista de options en base a numero de equipos
+function generateByTeamNumber(len) {
+    //Alamcenamos las opciones en un array auxiliar
+    let auxArrOptions = [];
+    for (let index = 2; index < len; index++) {
+        //Verificamos que los equipos sean de minimo 2 participantes
+        if (len / index < 2) {
+            break;
+        }
+        auxArrOptions.push(generateOptionHTML(index));
+    }
+    return auxArrOptions;
+
+}
+//Generar lista de options en base a numero de players
+function generateByPlayerNumber(len) {
+    let auxArrOptions = [];
+    //Los equipos pueden ser minimo de dos participantes, por lo que hacemos len.lenght/2 en el for-
+    for (let index = 2; index <= len / 2; index++) {
+        auxArrOptions.push(generateOptionHTML(index));
+    }
+    return auxArrOptions;
+}
+
+//Funcion para generar elemento HTML de options.
+function generateOptionHTML(num) {
+    let divElement = document.createElement("div");
+    divElement.classList.add("options");
+    divElement.innerHTML = num;
+    return divElement;
+}
+
+//Funcion para limpiar opciones de section2
+function clearOptions() {
+    let options = document.getElementsByClassName("options");
+    //Mientras exista algun elemento con dicha class
+    while (options[0]) {
+        options[0].parentNode.removeChild(options[0]);
+    }
+}
+
+//Funcionalidad slider Section 2
+
+//Se define para check el valor del slider de section 2
+let optionType = 0;
+let selectTeam = document.getElementById("select-team-container");
+let selectPlayer = document.getElementById("select-player-container");
+let sliderTarget = document.getElementById("slider");
+
+function sliderChange() {
+
+    if (optionType == 0) {
+        optionType = 1;
+        selectPlayer.classList.add("noVisibility");
+        selectTeam.classList.remove("noVisibility");
+        sliderTarget.classList.add("active-slider");
+
+
+
+    } else {
+        optionType = 0;
+        selectTeam.classList.add("noVisibility");
+        selectPlayer.classList.remove("noVisibility");
+        sliderTarget.classList.remove("active-slider");
+    }
 }
