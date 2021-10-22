@@ -375,12 +375,3 @@ function randomTeams() {
 
     return teams;
 }
-
-function probador() {
-    console.log('Evento logrado');
-}
-
-function eventos() {
-    let optionsForTeams = document.getElementById('select-team').children;
-    console.log(optionsForTeams[0])
-}
