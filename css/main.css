@@ -210,7 +210,7 @@ header {
 
 .labels {
     margin: auto;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: lighter;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
@@ -256,7 +256,6 @@ header {
     overflow: auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: transparent;
-    border: solid rgba(238, 234, 234, 0.2) 2px;
     width: 100%;
     height: 200px;
     color: white;
