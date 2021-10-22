@@ -387,12 +387,16 @@ function makeByPlayers(value) {
     let randoms = randomTeams();
     let index = 0;
 
-    for (let i = 0; i < players.length; i++) {
+    for (let i = 0; i < players.length / value; i++) {
         let divElement = document.createElement("div");
+        let title = document.createElement("div");
+        title.innerHTML = "Nombre de equipo";
+        title.classList.add("nameTeam")
         divElement.classList.add("team");
+        divElement.appendChild(title);
 
         for (let j = 0; j < value; j++) {
-            let player = drawPlayer(players[randoms[index]], 1);
+            let player = drawPlayer(randoms[index], 1);
             console.log(player)
             divElement.appendChild(player)
             index++;
