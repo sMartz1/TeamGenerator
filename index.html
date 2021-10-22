@@ -45,12 +45,12 @@
     <section class="section noVisibility" id="section2">
         <!--Esto contendra ambas opciones-->
         <div class="form">
-            <div class="slide">
-                <div class="borderSlider">
+            <div class="slide" onclick="sliderChange()">
+                <div class="borderSlider" id="slider">
                     <div class="buttonSlider"></div>
                 </div>
             </div>
-            <div class="interiorForm">
+            <div class="interiorForm" id="select-player-container">
                 <p class="labels">Participantes por equipo</p>
                 <!--Este div se rellenara de forma dinamica desde el JS-->
                 <div class="selects" id="select-player">
@@ -59,7 +59,7 @@
                     <div class="options">1</div>
                 </div>
             </div>
-            <div class="interiorForm noVisibility">
+            <div class="interiorForm noVisibility" id="select-team-container">
                 <p class="labels">Numero de equipos</p>
                 <!--Este div se rellenara de forma dinamica desde el JS-->
                 <div class="selects" id="select-team">

@@ -243,9 +243,6 @@ function tipUpload(behavior) {
 
 
 }
-//Se define para check el valor del slider de section 2 WIP
-let optionType = 0;
-
 
 //Funcionalidad para definir las opciones disponibles en section 2.
 //Los equipos pueden ser de un minimo de 2 participantes.
@@ -310,5 +307,31 @@ function clearOptions() {
     //Mientras exista algun elemento con dicha class
     while (options[0]) {
         options[0].parentNode.removeChild(options[0]);
+    }
+}
+
+//Funcionalidad slider Section 2
+
+//Se define para check el valor del slider de section 2
+let optionType = 0;
+let selectTeam = document.getElementById("select-team-container");
+let selectPlayer = document.getElementById("select-player-container");
+let sliderTarget = document.getElementById("slider");
+
+function sliderChange() {
+
+    if (optionType == 0) {
+        optionType = 1;
+        selectPlayer.classList.add("noVisibility");
+        selectTeam.classList.remove("noVisibility");
+        sliderTarget.classList.add("active-slider");
+
+
+
+    } else {
+        optionType = 0;
+        selectTeam.classList.add("noVisibility");
+        selectPlayer.classList.remove("noVisibility");
+        sliderTarget.classList.remove("active-slider");
     }
 }
