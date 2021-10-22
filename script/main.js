@@ -36,6 +36,7 @@ function changePage(option) {
 function changeDom() {
 
     switch (currentPage) {
+        //Section 1
         case 0:
             if (!s2.classList.contains("noVisibility")) {
                 s2.classList.add("noVisibility");
@@ -46,7 +47,10 @@ function changeDom() {
             s1.classList.remove("noVisibility");
             break;
 
+            //Section 2
         case 1:
+            //Actualizamos opciones siempre que se vaya a visualizar section2
+            createOptions();
             if (!s1.classList.contains("noVisibility")) {
                 s1.classList.add("noVisibility");
             }
@@ -55,7 +59,7 @@ function changeDom() {
             }
             s2.classList.remove("noVisibility");
             break;
-
+            //Section 3
         case 2:
             if (!s1.classList.contains("noVisibility")) {
                 s1.classList.add("noVisibility");
@@ -240,7 +244,7 @@ function tipUpload(behavior) {
 
 }
 //Se define para check el valor del slider de section 2 WIP
-let optionType = "";
+let optionType = 0;
 
 
 //Funcionalidad para definir las opciones disponibles en section 2.
@@ -248,6 +252,20 @@ let optionType = "";
 //Tener variable con que opciones quedarian desequilibrados los equipos.
 function createOptions() {
     let playerL = players.length;
+    let optionsT = generateByTeamNumber(playerL);
+    let optionsP = generateByPlayerNumber(playerL);
+    //Limpiamos todas las opciones
+    clearOptions();
+
+    let teamContainer = document.getElementById("select-team");
+    for (let index = 0; index < optionsT.length; index++) {
+        teamContainer.append(optionsT[index]);
+    }
+
+    let playerContainer = document.getElementById("select-player");
+    for (let index = 0; index < optionsP.length; index++) {
+        playerContainer.append(optionsP[index]);
+    }
 
 
 
@@ -272,8 +290,8 @@ function generateByTeamNumber(len) {
 function generateByPlayerNumber(len) {
     let auxArrOptions = [];
     //Los equipos pueden ser minimo de dos participantes, por lo que hacemos len.lenght/2 en el for-
-    for (let index = 2; index <= len.length / 2; index++) {
-        auxArrOptions.push(generateOptionHTML(index))
+    for (let index = 2; index <= len / 2; index++) {
+        auxArrOptions.push(generateOptionHTML(index));
     }
     return auxArrOptions;
 }
@@ -282,6 +300,15 @@ function generateByPlayerNumber(len) {
 function generateOptionHTML(num) {
     let divElement = document.createElement("div");
     divElement.classList.add("options");
-    divElement.innerHTML(num);
+    divElement.innerHTML = num;
     return divElement;
+}
+
+//Funcion para limpiar opciones de section2
+function clearOptions() {
+    let options = document.getElementsByClassName("options");
+    //Mientras exista algun elemento con dicha class
+    while (options[0]) {
+        options[0].parentNode.removeChild(options[0]);
+    }
 }
