@@ -148,11 +148,9 @@ function addPlayer(aux = "") {
     players.push(value);
 
     drawPlayer(value, 0);
-
-    //IMPORTANTE modifico creacion de elementos en base a nuevo diseño.
-    //Necesaria estructura <div class="player"><p>$NAME</p><span>X</span></div>
 }
 
+//Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
 function drawPlayer(value, option) {
     //Se crea div contenedor de la card
     let container = document.createElement('div');
@@ -190,7 +188,7 @@ function modifyPlayer(player) {
 
     if (!player.isContentEditable) {
         let valor = player.textContent;
-        var arrayNumber = players.indexOf(valor);
+        var preValue = players.indexOf(valor);
         player.setAttribute("contentEditable", "true")
 
         //Aqui tendremos el valor postcambio
@@ -199,21 +197,23 @@ function modifyPlayer(player) {
             //Evento que detectara si el usuario pulsa ENTER
             player.addEventListener("keydown", function (e) {
                 if (e.keyCode === 13) {
-                    player.removeAttribute("contentEditable")
-                    valor = player.textContent;
-                    players[arrayNumber] = valor;
+                    stopEdit(player, preValue);
                 }
             })
 
             //Evento que controlara el valor si el elemento pierde el foco
             player.addEventListener('blur', function (e) {
-                player.addEventListener
-                player.removeAttribute("contentEditable")
-                valor = player.textContent;
-                players[arrayNumber] = valor;
+                stopEdit(player, preValue);
             })
         }
     }
+}
+
+//Player es el elemento HTML en si, prevalue es el valor precambio
+function stopEdit(player, preValue) {
+    player.removeAttribute("contentEditable")
+    value = player.textContent;
+    players[preValue] = value;
 }
 
 
@@ -231,12 +231,20 @@ function removePlayer(player) {
 }
 
 //Esta funcion eliminaria todos los players tanto en el array como en el boxText
-function removeAll() {
-    players = [];
+//Agregada funcionalidad para borrar ambos tableros
+function removeAll(option) {
 
-    while (playerBoards[0].firstChild) {
-        playerBoards[0].removeChild(playerBoards[0].firstChild);
+    if (option == 0) {
+        players = [];
+        while (playerBoards[0].firstChild) {
+            playerBoards[0].removeChild(playerBoards[0].firstChild);
+        }
+    } else {
+        while (playerBoards[1].firstChild) {
+            playerBoards[1].removeChild(playerBoards[1].firstChild);
+        }
     }
+
 }
 //Funcionalidad tips en mouseOver
 //Se hace que aparezca el tip en mouseOver y desaparezca en mouseLeft
@@ -348,7 +356,7 @@ function sliderChange() {
 
 //Pruebas funciones randomizer for section 3
 
-//No deberia provocar retrasos
+//Devuelve un arr de numeros random cuyo maximo es el nº de players
 function generateRandomArr() {
     let randomArr = [];
     while (randomArr.length < players.length) {
@@ -360,7 +368,7 @@ function generateRandomArr() {
     return randomArr;
 }
 
-//Devuelve nuevo arr con los players randomizados
+//Devuelve un arr usando de index la matriz generada con generateRandom para insertar nombres aleatoriamente
 function randomTeams() {
     let randoms = generateRandomArr();
     let teams = [];
@@ -377,27 +385,39 @@ function selectOption(option) {
     let padre = option.parentNode.getAttribute('id')
     let value = option.innerHTML
     if (padre == 'select-player') {
-        console.log('hijo de selector por participantes' + value)
+        makeByPlayers(value);
     } else {
         console.log('hijo de selector por equipos');
     }
 }
 
+//Esta funcion sera llamada iterativamente para crear los teams devolviendo el elemento html creado y montado
+//Si queremos agregar valores a la creacion del grupo bastaria tocar los valores que recibe y usa drawTeam()
+function drawTeam() {
+    let divElement = document.createElement("div");
+    let title = document.createElement("div");
+    title.innerHTML = "Nombre de equipo";
+    title.classList.add("nameTeam")
+    divElement.classList.add("team");
+    divElement.appendChild(title);
+
+    return divElement
+}
+
+//Esta funcion los repartira por jugadores
 function makeByPlayers(value) {
+    removeAll(1);
     let randoms = randomTeams();
     let index = 0;
 
     for (let i = 0; i < players.length / value; i++) {
-        let divElement = document.createElement("div");
-        let title = document.createElement("div");
-        title.innerHTML = "Nombre de equipo";
-        title.classList.add("nameTeam")
-        divElement.classList.add("team");
-        divElement.appendChild(title);
+        let divElement = drawTeam(); //Dibujamos equipo
 
         for (let j = 0; j < value; j++) {
-            let player = drawPlayer(randoms[index], 1);
-            console.log(player)
+            if (randoms[index] == undefined) {
+                break;
+            }
+            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
             divElement.appendChild(player)
             index++;
         }
@@ -405,5 +425,10 @@ function makeByPlayers(value) {
         playerBoards[1].appendChild(divElement);
 
     }
+
+}
+
+//Esta los repartira por equipos
+function makeByTeams(value) {
 
 }
