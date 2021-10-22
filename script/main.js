@@ -306,6 +306,7 @@ function generateOptionHTML(num) {
     let divElement = document.createElement("div");
     divElement.classList.add("options");
     divElement.innerHTML = num;
+    divElement.setAttribute('onclick', 'selectOption(this)')
     return divElement;
 }
 
@@ -347,10 +348,6 @@ function sliderChange() {
 
 //Pruebas funciones randomizer for section 3
 
-let options = document.getElementsByClassName('options');
-
-options.addEventListener('click', 'probador')
-
 //No deberia provocar retrasos
 function generateRandomArr() {
     let randomArr = [];
@@ -373,4 +370,36 @@ function randomTeams() {
     }
 
     return teams;
+}
+
+//Entramos usando this en las options, y asi obtenemos el id del padre y actuamos en consecuencia
+function selectOption(option) {
+    let padre = option.parentNode.getAttribute('id')
+    let value = option.innerHTML
+    if (padre == 'select-player') {
+        console.log('hijo de selector por participantes' + value)
+    } else {
+        console.log('hijo de selector por equipos');
+    }
+}
+
+function makeByPlayers(value) {
+    let randoms = randomTeams();
+    let index = 0;
+
+    for (let i = 0; i < players.length; i++) {
+        let divElement = document.createElement("div");
+        divElement.classList.add("team");
+
+        for (let j = 0; j < value; j++) {
+            let player = drawPlayer(players[randoms[index]], 1);
+            console.log(player)
+            divElement.appendChild(player)
+            index++;
+        }
+
+        playerBoards[1].appendChild(divElement);
+
+    }
+
 }
