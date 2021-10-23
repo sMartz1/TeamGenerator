@@ -160,13 +160,13 @@ header {
 
 /*Estilos P player */
 
-.player {
+.player{
     display: flex;
     margin-right: 16px;
     margin-top: 5px;
 }
 
-.boxText>.player>p {
+.player>p {
     background-color: rgb(222, 222, 222, 0.2);
     border: solid rgb(222, 222, 222, 0.8) 1px;
     border-right: 0px;
@@ -181,11 +181,11 @@ header {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.boxText>.player>p:hover {
+.player>p:hover {
     background-color: rgb(222, 222, 222, 0.4);
 }
 
-.boxText>.player>span {
+.player>span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +198,7 @@ header {
     border: solid rgb(255, 114, 122) 1px;
 }
 
-.boxText>.player>span:hover {
+.player>span:hover {
     cursor: pointer;
     color: white;
     background-color: #b61d1d;
@@ -273,7 +273,7 @@ header {
     margin: 1%;
 }
 
-.options {
+.options{
     overflow: auto;
     text-align: center;
     margin: auto;
@@ -397,4 +397,30 @@ header {
 
 .noVisibility {
     display: none;
+}
+
+/* Clase para el grupo de participantes */
+.team{
+    width: 50%;
+    background-color: rgba(209, 214, 214, 0.493);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 1%;
+    gap: 1%;
+}
+
+.nameTeam{
+    font-size: 20px;
+    color: white;
+    background-color: red;
+    width: 98.5%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 3px;
 }
