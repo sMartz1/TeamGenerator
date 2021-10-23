@@ -226,8 +226,16 @@ function removePlayer(player) {
         players.splice(posPlayer, 1);
 
     }
+
+
     //Eliminamos card.
-    let parent = player.parentNode.remove()
+    if (playerBoards[0].children.item(player)) {
+        playerBoards[0].children.item(player).remove();
+    }
+
+    if (playerBoards[1].children.item(player)) {
+        playerBoards[1].children.item(player).remove();
+    }
 }
 
 //Esta funcion eliminaria todos los players tanto en el array como en el boxText

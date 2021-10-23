@@ -401,7 +401,7 @@ header {
 
 /* Clase para el grupo de participantes */
 .team{
-    width: 50%;
+    width: 30%;
     background-color: rgba(209, 214, 214, 0.493);
     border: 1px solid black;
     display: flex;
