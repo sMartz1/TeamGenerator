@@ -245,7 +245,7 @@ header {}
     text-align: center;
     background-color: transparent;
     padding: 3%;
-    text-shadow: 0px 0px 7px rgb(11, 151, 11);
+    text-shadow: 0px 0px 7px rgb(11, 129, 11);
 }
 
 .selects {
@@ -305,6 +305,12 @@ header {}
     .selects{
         padding-left: 20px;
         width: 95%;
+    }
+}
+
+@media (max-width : 600px) {
+    .selections{
+        width: 91.5%;
     }
 }
 
