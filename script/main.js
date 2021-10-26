@@ -402,6 +402,10 @@ function selectOption(option) {
     } else {
         makeByTeams(value);
     }
+
+
+    currentPage++;
+    changeDom();
 }
 
 //Esta funcion sera llamada iterativamente para crear los teams devolviendo el elemento html creado y montado
