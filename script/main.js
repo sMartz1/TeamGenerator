@@ -339,17 +339,21 @@ function clearOptions() {
 
 //Se define para check el valor del slider de section 2
 let optionType = 0;
-let selectTeam = document.getElementById("select-team-container");
-let selectPlayer = document.getElementById("select-player-container");
-let sliderTarget = document.getElementById("slider");
 
-function sliderChange() {
+let selects = document.getElementsByClassName('selection')
+selects[0].addEventListener('click', targetOption);
+selects[1].addEventListener('click', targetOption);
+
+function targetOption() {
+    let selectTeam = document.getElementById("select-team-container");
+    let selectPlayer = document.getElementById("select-player-container");
 
     if (optionType == 0) {
         optionType = 1;
         selectPlayer.classList.add("noVisibility");
         selectTeam.classList.remove("noVisibility");
-        sliderTarget.classList.add("active-slider");
+        selects[1].classList.add('selected')
+        selects[0].classList.remove('selected')
 
 
 
@@ -357,7 +361,8 @@ function sliderChange() {
         optionType = 0;
         selectTeam.classList.add("noVisibility");
         selectPlayer.classList.remove("noVisibility");
-        sliderTarget.classList.remove("active-slider");
+        selects[0].classList.add('selected')
+        selects[1].classList.remove('selected')
     }
 }
 
