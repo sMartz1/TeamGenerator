@@ -344,30 +344,23 @@ let selects = document.getElementsByClassName('selection')
 selects[0].addEventListener('click', targetOption);
 selects[1].addEventListener('click', targetOption);
 
-function targetOption() {
+function targetOption(button) {
     let selectTeam = document.getElementById("select-team-container");
     let selectPlayer = document.getElementById("select-player-container");
 
-    if (optionType == 0) {
-        optionType = 1;
+    if (this == selects[1]) {
         selectPlayer.classList.add("noVisibility");
         selectTeam.classList.remove("noVisibility");
         selects[1].classList.add('selected')
         selects[0].classList.remove('selected')
 
-
-
-    } else {
-        optionType = 0;
+    } else if (this == selects[0]) {
         selectTeam.classList.add("noVisibility");
         selectPlayer.classList.remove("noVisibility");
         selects[0].classList.add('selected')
         selects[1].classList.remove('selected')
     }
 }
-
-
-//Pruebas funciones randomizer for section 3
 
 //Devuelve un arr de numeros random cuyo maximo es el nº de players
 function generateRandomArr() {
