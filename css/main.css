@@ -306,6 +306,10 @@ header {}
         padding-left: 20px;
         width: 95%;
     }
+
+    .titles{
+        font-size: 30px;
+    }
 }
 
 @media (max-width : 600px) {
