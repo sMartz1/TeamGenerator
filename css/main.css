@@ -60,6 +60,8 @@ main::after {
 }
 
 
+
+
 /*Estilos de cabecera con logo */
 
 header {}
@@ -144,12 +146,12 @@ header {}
 
 .selection, .selected{
     text-align: center;
-    width: 100%;
+    width: 90%;
     border: 2px solid #0c0;
-    height: 90px;
-    font-size: 40px;
+    height: 40px;
+    font-size: 30px;
     margin: auto;
-    padding-top: 30px;
+    padding: 30px;
     background-color: transparent;
     box-shadow: 0px 0px 5px #0c0 inset;
 }
@@ -182,7 +184,7 @@ header {}
     flex-direction: column;
     margin: auto;
     width: 90%;
-    min-height: 500px;
+    height: 500px;
     border: solid #0c0 2px;
     box-shadow: 0px 0px 5px #0c0 inset, 0px 0px 5px #0c0;
 }
@@ -252,6 +254,8 @@ header {}
     width: 100%;
     height: 300px;
     font-size: 20px;
+    margin: auto;
+    margin-top: 45px;
 }
 
 .titles {
@@ -259,6 +263,8 @@ header {}
     text-align: center;
     font-weight: bolder;
     font-size: 40px;
+    text-shadow: 0px 0px 4px rgb(7, 109, 7);
+    padding-bottom: 1%;
 }
 
 .options {
@@ -279,25 +285,43 @@ header {}
 .options:hover{
     background-color: transparent;
     border: 1px solid #0c0;
-    box-shadow: 0px 0px 15px #0c0 inset;
+    box-shadow: 0px 0px 10px #0c0 inset;
     cursor: pointer;
 }
 
+@media (max-width: 900px) {
+    .selection{
+        font-size: 20px;
+    }
+
+    .labels{
+        font-size: 40px;
+        margin: auto;
+        padding-top: 15%;
+    }
+
+    .selects{
+        padding-left: 20px;
+        width: 95%;
+    }
+}
 
 /* Estilos del scroll */
 
 .selects::-webkit-scrollbar {
-    width: 5px;
+    width: 25px;
     height: 5px;
     background-color: transparent;
 }
 
 .selects::-webkit-scrollbar-thumb {
-    background: rgb(255, 255, 255);
+    background: #0c0;
+    box-shadow: 0px 0px 5px #0c0;
 }
 
 .selects::-webkit-scrollbar-track {
     border-radius: 2px;
+    cursor: pointer;
 }
 
 
