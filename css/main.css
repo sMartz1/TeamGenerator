@@ -94,7 +94,7 @@ main::after {
     margin: auto;
 }
 
-#section2{
+#section2 {
     width: 100%;
 }
 
@@ -147,7 +147,7 @@ main::after {
     overflow-y: scroll;
 }
 
-.boxText:nth-of-type(1){
+.boxText:nth-of-type(1) {
     max-height: 550px;
 }
 
@@ -249,11 +249,11 @@ main::after {
     box-shadow: 0px 0px 5px #0c0 inset, 0px 0px 5px #0c0;
 }
 
-.boxText:nth-of-type(1){
+.boxText:nth-of-type(1) {
     height: 1900px;
 }
 
-#section3{
+#section3 {
     height: 700px;
 }
 
@@ -392,9 +392,8 @@ main::after {
     }
 }
 
-@media(max-width:460px){
-
-    .selections{
+@media(max-width:460px) {
+    .selections {
         padding: 0px;
         padding-right: 0px;
         margin: 0px;
@@ -402,28 +401,24 @@ main::after {
         width: 90%;
         align-self: center;
     }
-
-    .selection{
+    .selection {
         font-size: 15px;
         margin: auto;
         padding: auto;
     }
-
-    .labels{
+    .labels {
         font-size: 20px;
     }
-
-    .titles{
+    .titles {
         font-size: 15px;
     }
-
-    .selects{
+    .selects {
         width: 93%;
     }
 }
 
 @media (max-width:370px) {
-    .selection{
+    .selection {
         width: 30%;
     }
 }
@@ -513,8 +508,9 @@ main::after {
 
 .file-button input[type="file"] {
     opacity: 0;
-    height: 50px;
-    width: 50px;
+    height: 65px;
+    width: 90px;
+    margin-top: -10px;
     position: absolute;
 }
 
@@ -546,7 +542,7 @@ main::after {
 }
 
 @media (max-width:590px) {
-    .team{
+    .team {
         width: 100%;
     }
 }
@@ -619,11 +615,10 @@ main::after {
 /* Responsive Title */
 
 @media (max-width:400px) {
-    header h1{
+    header h1 {
         font-size: 40px;
     }
-
-    .control{
+    .control {
         width: 100%;
         margin-right: 10px;
         margin-left: 10px;
@@ -631,18 +626,15 @@ main::after {
         margin-bottom: 60px;
         font-size: 10px;
     }
-
-    .control div{
+    .control div {
         width: 20%;
         font-size: 50px;
         height: 50px;
     }
-
-    .file-button{
+    .file-button {
         height: 40px;
     }
-
-    #inputF{
+    #inputF {
         font-size: 11250px;
     }
 }
