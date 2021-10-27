@@ -33,7 +33,9 @@
                 <p>Esperando a participantes...</p>
             </div>
             <!--Este seria el boton para pasar a la siguiente pagina-->
-            <div class="button button-nav" onclick="changePage(1)">→</div>
+            <div class="button button-nav" onclick="changePage(1)">
+                →
+            </div>
         </section>
 
         <section class="section no-visibility" id="section2">
@@ -50,6 +52,10 @@
                     <p class="titles">Opciones</p>
                     <div class="selects" id="select-player">
                     </div>
+                    <div class="button-container">
+                        <div class="button button-nav" onclick="changePage(0)">←</div>
+
+                    </div>
                 </div>
                 <div class="interiorForm no-visibility" id="select-team-container">
                     <p class="labels">Numero de equipos</p>
@@ -57,12 +63,13 @@
                     <p class="titles">Opciones</p>
                     <div class="selects" id="select-team">
                     </div>
+                    <div class="button-container">
+                        <div class="button button-nav" onclick="changePage(0)">←</div>
+
+                    </div>
                 </div>
                 <!--Botones-->
-                <div class="button-container">
-                    <div class="button button-nav" onclick="changePage(0)">←</div>
-                    <div class="button button-nav" onclick="changePage(1)">→</div>
-                </div>
+
             </div>
         </section>
 

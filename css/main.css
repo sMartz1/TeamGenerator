@@ -90,7 +90,6 @@ main::after {
     min-height: 500px;
 }
 
-#section1 .button,
 #section3 .button {
     margin: auto;
 }
@@ -388,7 +387,7 @@ main::after {
     font-size: 720%;
     width: 150px;
     height: 50px;
-    padding-bottom: 1%;
+    color: #0c0;
 }
 
 .menuButton {
@@ -421,7 +420,10 @@ main::after {
 
 .menuButton:hover,
 .button-nav:hover {
-    border: solid rgba(238, 0, 234, 0.5) 2px;
+    background-color: #0c0;
+    color: white;
+    box-shadow: 0 0 5px #0c0;
+    text-shadow: 0 0 5px #0c0;
 }
 
 #tip-Upload {
@@ -433,26 +435,15 @@ main::after {
     padding: 10px 10px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: auto;
-    position: relative;
-    top: -150px;
-    margin-top: 25px;
-    width: 60%;
-}
+.button-container {}
 
 .button-nav {
-    font-size: 200%;
-    width: 50px;
-    height: 50px;
-    border: solid #0c0 2px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: lighter;
-    padding-bottom: 0px;
-    transition: 1s;
+    font-size: 400%;
+    width: 130px;
+    border: solid #0c0 4px;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    align-self: center;
 }
 
 
