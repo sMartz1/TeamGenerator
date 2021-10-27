@@ -177,18 +177,23 @@ function addPlayer(aux = "") {
  * Si no es asi comprobaremos unicamente la cadena entrante con un microfor
  */
 function normalizeName(value) {
-
+    let count = 0;
     let filteredName = value.split(' ');
 
     if (filteredName.length > 1) {
         filteredName = filteredName.reduce((acc, el, i) => {
             if (el.length > 2) {
-                if (i == 1) {
-                    return acc + ' ' + el.charAt(0).toUpperCase();
-                } else {
-                    return acc + el.charAt(0).toUpperCase();
+                if (count >= 4) {
+                    return acc;
                 }
 
+                if (i == 1) {
+                    count++;
+                    return acc + ' ' + el.charAt(0).toUpperCase();
+                } else {
+                    count++;
+                    return acc + el.charAt(0).toUpperCase();
+                }
             }
             return acc
         })
