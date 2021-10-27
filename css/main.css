@@ -142,6 +142,17 @@ main::after {
     overflow-y: scroll;
 }
 
+.waiting:after {
+    animation: blink 1s infinite;
+    content: "_";
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 
 /*scroll BOXTEXT*/
 
