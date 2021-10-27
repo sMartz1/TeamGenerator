@@ -112,6 +112,7 @@ main::after {
     border: none;
     border-bottom: 4px solid #090;
     background: none;
+    height: 50px;
     font-size: 100%;
     color: #0c0;
     transition: 0.2s;
@@ -395,27 +396,21 @@ main::after {
     justify-content: center;
     font-size: 200%;
     border: solid #0c0 2px;
-    width: 100px;
+    width: 90px;
     cursor: pointer;
     text-align: center;
     padding-bottom: 5px;
 }
 
 .file-button {
-    background: url("../images/uploadW.png");
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-bottom: 0px;
+    padding-top: 9px;
 }
 
-.file-button:hover {
-    background: url("../images/uploadP.png");
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: solid rgba(238, 0, 234, 1) 2px;
-    background-blend-mode: soft-light;
-}
+.file-button:hover {}
 
 .menuButton:hover,
 .button-nav:hover {
@@ -434,8 +429,6 @@ main::after {
     padding: 10px 10px;
 }
 
-.button-container {}
-
 .button-nav {
     font-size: 400%;
     width: 130px;
@@ -451,7 +444,8 @@ main::after {
 .file-button input[type="file"] {
     opacity: 0;
     height: 50px;
-    display: inline-block;
+    width: 50px;
+    position: absolute;
 }
 
 
