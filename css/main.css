@@ -17,12 +17,13 @@ h1 {
 header {
     display: flex;
     justify-content: center;
+    margin-top: 25px;
 }
 
 main {
     display: flex;
     flex-flow: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     text-align: center;
     animation: colorPulse 5s infinite ease-in-out;
     background-image: radial-gradient(#444, #111);
@@ -69,12 +70,7 @@ main::after {
     #tip-Upload {
         display: none;
     }
-    header {
-        margin-bottom: 0px;
-    }
 }
-
-
 
 
 /*Estilos de cabecera con logo */
@@ -99,7 +95,9 @@ main::after {
     margin: auto;
 }
 
-#section1 {}
+#section1 {
+    margin-top: 60px;
+}
 
 #section2 {}
 
@@ -169,19 +167,19 @@ main::after {
     padding-bottom: 5%;
 }
 
-.selections{
+.selections {
     display: flex;
     margin: auto;
     position: relative;
     top: 10px;
-    margin-top: -60px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 90%;
 }
 
-.selection, .selected{
+.selection,
+.selected {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -195,13 +193,13 @@ main::after {
     box-shadow: 0px 0px 5px #0c0 inset;
 }
 
-.selected{
+.selected {
     background-color: #0c0;
     color: white;
     box-shadow: 0px 0px 10px #0c0;
 }
 
-.selection:hover{
+.selection:hover {
     background-color: #0c0;
     color: white;
     cursor: pointer;
@@ -329,7 +327,7 @@ main::after {
     box-shadow: 0px 0px 3px #0c0;
 }
 
-.options:hover{
+.options:hover {
     background-color: transparent;
     border: 1px solid #0c0;
     box-shadow: 0px 0px 10px #0c0 inset;
@@ -337,31 +335,29 @@ main::after {
 }
 
 @media (max-width: 900px) {
-    .selection{
+    .selection {
         font-size: 20px;
     }
-
-    .labels{
+    .labels {
         font-size: 40px;
         margin: auto;
         padding-top: 15%;
     }
-
-    .selects{
+    .selects {
         padding-left: 20px;
         width: 95%;
     }
-
-    .titles{
+    .titles {
         font-size: 30px;
     }
 }
 
-@media (max-width : 600px) {
-    .selections{
+@media (max-width: 600px) {
+    .selections {
         width: 91.5%;
     }
 }
+
 
 /* Estilos del scroll */
 
@@ -495,8 +491,8 @@ main::after {
 }
 
 
-
 /*ANIMACIONES MEDIANTE CLASES Y KEYFRAMES*/
+
 
 /* .fade-in{
     animation: fadeIn 2s ease-in-out normal 2s forwards;
@@ -506,23 +502,54 @@ main::after {
     animation: fadeOut 1s ease-in-out normal 1s forwards;
 } */
 
-.no-visibility{
+.no-visibility {
     display: none;
 }
 
-
 @keyframes fadeIn {
-    0%{display:flex; opacity: 0; color: #060;}
-    35%{opacity: 0.7; color: #0c0;}
-    50%{opacity: 0.8; color:#090;}
-    75%{opacity: 0.25; color: #060;}
-    100%{opacity: 1; color: #0c0;}
+    0% {
+        display: flex;
+        opacity: 0;
+        color: #060;
+    }
+    35% {
+        opacity: 0.7;
+        color: #0c0;
+    }
+    50% {
+        opacity: 0.8;
+        color: #090;
+    }
+    75% {
+        opacity: 0.25;
+        color: #060;
+    }
+    100% {
+        opacity: 1;
+        color: #0c0;
+    }
 }
 
 @keyframes fadeOut {
-    0%{opacity: 1; color: #0c0;}
-    35%{opacity: 0.25; color: #060;}
-    50%{opacity: 0.8; color:#090;}
-    75%{opacity: 0.75; color: #0c0;}
-    100%{opacity: 0; color: #060; display: none;}
+    0% {
+        opacity: 1;
+        color: #0c0;
+    }
+    35% {
+        opacity: 0.25;
+        color: #060;
+    }
+    50% {
+        opacity: 0.8;
+        color: #090;
+    }
+    75% {
+        opacity: 0.75;
+        color: #0c0;
+    }
+    100% {
+        opacity: 0;
+        color: #060;
+        display: none;
+    }
 }
