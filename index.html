@@ -11,10 +11,10 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
     <main>
+        <header><img src="./images/logoTB.png" alt="" class="logo">
+            <h1>TeamGenerator</h1>
+        </header>
 
         <section class="section" id="section1">
             <div class="control">
@@ -24,18 +24,14 @@
                     <!--Input que proporciona funcionalidad al boton, graficamente esta oculto.-->
                     <input type="file" name="src-file" aria-label="Archivo" id="inputF">
                 </div>
-                <input class="text" type="text" name="" id="">
+                <input class="text" type="text" name="" id="" placeholder="Introduzca nombre de participante">
                 <div class="menuButton" onclick="addPlayer()">+</div>
-
             </div>
-
             <!--Aqui se deberian mostrar los nombres mientras se van añadiendo-->
             <div class="boxText">
                 <!--Tarjeta de usuario de prueba-->
                 <p>Esperando a participantes...</p>
-
             </div>
-
             <!--Este seria el boton para pasar a la siguiente pagina-->
             <div class="button button-nav" onclick="changePage(1)">→</div>
         </section>
@@ -52,7 +48,7 @@
                     <p class="labels">Participantes por equipo</p>
                     <!--Este div se rellenara de forma dinamica desde el JS-->
                     <p class="titles">Opciones</p>
-                    <div class="selects" id="select-player">
+                    <div class="selects" id="select-player">           
                     </div>
                 </div>
                 <div class="interiorForm no-visibility" id="select-team-container">
@@ -68,14 +64,12 @@
                     <div class="button button-nav" onclick="changePage(1)">→</div>
                 </div>
             </div>
-
-
         </section>
+
 
         <section class="section no-visibility" id="section3">
             <!--Aqui deberian mostrarse los equipos-->
             <div class="boxText"></div>
-
             <!--Boton para volver atras-->
             <div class="button button-nav" onclick="changePage(0)">←</div>
         </section>
