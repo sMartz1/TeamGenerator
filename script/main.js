@@ -162,7 +162,7 @@ function addPlayer(aux = "") {
     }
     //Recibimos el valor del input y lo introducimos a players
     //Comprobamos el tamaño del nombre para evitar missclick
-    if (value.length < 2) {
+    if (value.length <= 2) {
         return 'Nombre no valido'
     }
     let filteredValue = normalizeName(value)
@@ -457,6 +457,7 @@ function selectOption(option) {
 function drawTeam(numered) {
     let divElement = document.createElement("div");
     let title = document.createElement("div");
+    numered = parseInt(numered) + 1
     title.innerHTML = "Equipo " + numered;
     title.classList.add("nameTeam")
     divElement.classList.add("team");

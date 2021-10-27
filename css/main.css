@@ -143,6 +143,10 @@ main::after {
     overflow-y: scroll;
 }
 
+.boxText:nth-of-type(1){
+    max-height: 550px;
+}
+
 .waiting:after {
     animation: blink 1s infinite;
     content: "_";
@@ -241,14 +245,23 @@ main::after {
     box-shadow: 0px 0px 5px #0c0 inset, 0px 0px 5px #0c0;
 }
 
+.boxText:nth-of-type(1){
+    height: 1900px;
+}
+
+#section3{
+    height: 700px;
+}
+
 
 /*Estilos P player */
 
 .player {
     display: flex;
-    margin-right: 16px;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .player>p {
@@ -374,6 +387,42 @@ main::after {
     }
 }
 
+@media(max-width:460px){
+
+    .selections{
+        padding: 0px;
+        padding-right: 0px;
+        margin: 0px;
+        margin-left: 0px;
+        width: 90%;
+        align-self: center;
+    }
+
+    .selection{
+        font-size: 15px;
+        margin: auto;
+        padding: auto;
+    }
+
+    .labels{
+        font-size: 20px;
+    }
+
+    .titles{
+        font-size: 15px;
+    }
+
+    .selects{
+        width: 93%;
+    }
+}
+
+@media (max-width:370px) {
+    .selection{
+        width: 30%;
+    }
+}
+
 
 /* Estilos del scroll */
 
@@ -491,6 +540,12 @@ main::after {
     max-height: 38px;
 }
 
+@media (max-width:550px) {
+    .team{
+        width: 100%;
+    }
+}
+
 
 /*ANIMACIONES MEDIANTE CLASES Y KEYFRAMES*/
 
@@ -552,5 +607,14 @@ main::after {
         opacity: 0;
         color: #060;
         display: none;
+    }
+}
+
+
+/* Responsive Title */
+
+@media (max-width:400px) {
+    header h1{
+        font-size: 40px;
     }
 }
