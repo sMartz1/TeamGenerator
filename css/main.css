@@ -75,6 +75,8 @@ main::after {
 }
 
 
+
+
 /*Estilos de cabecera con logo */
 
 .logo {
@@ -89,7 +91,6 @@ main::after {
 .section {
     display: flex;
     flex-direction: column;
-    padding: 1%;
     min-height: 400px;
 }
 
@@ -168,27 +169,64 @@ main::after {
     padding-bottom: 5%;
 }
 
+.selections{
+    display: flex;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    margin-top: -60px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.selection, .selected{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    border: 2px solid #0c0;
+    height: 40px;
+    font-size: 30px;
+    margin: auto;
+    padding: 30px;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px #0c0 inset;
+}
+
+.selected{
+    background-color: #0c0;
+    color: white;
+    box-shadow: 0px 0px 10px #0c0;
+}
+
+.selection:hover{
+    background-color: #0c0;
+    color: white;
+    cursor: pointer;
+}
+
 .form {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    gap: 5%;
     width: 80%;
     margin: auto;
     min-height: 250px;
-    padding: 5%;
-    border: solid #0c0 2px;
 }
 
 .interiorForm {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin: auto;
-    width: 60%;
-    min-height: 300px;
+    margin-top: -95px;
+    width: 90%;
+    padding-top: 100px;
+    height: 600px;
     border: solid #0c0 2px;
+    box-shadow: 0px 0px 5px #0c0 inset, 0px 0px 5px #0c0;
 }
 
 
@@ -229,6 +267,8 @@ main::after {
     width: 25px;
     color: azure;
     text-shadow: 0 0 black;
+    color: white;
+    font-weight: bolder;
     border: solid #0c0 1px;
 }
 
@@ -243,65 +283,32 @@ main::after {
 
 .labels {
     margin: auto;
-    font-size: 40px;
+    margin-top: 4px;
+    margin-bottom: 15px;
+    font-size: 70px;
     font-weight: lighter;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     background-color: transparent;
-    padding: 7%;
-}
-
-.slide {
-    width: 60px;
-    height: 20px;
-    align-self: center;
-    text-align: center;
-    background-color: #0c0;
-    border-radius: 30px;
-    margin-top: -2%;
-    margin-bottom: 3%;
-}
-
-.buttonSlider {
-    position: relative;
-    border-radius: 50%;
-    top: 6px;
-    left: 5px;
-    width: 19px;
-    height: 19px;
-    background-color: rgb(192, 187, 187);
-    z-index: 2;
-}
-
-.borderSlider {
-    position: relative;
-    top: -5px;
-    left: 0px;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: rgb(211, 208, 205);
-    z-index: 1;
-}
-
-.active-slider {
-    left: 30px;
+    padding: 3%;
+    text-shadow: 0px 0px 7px rgb(11, 129, 11);
 }
 
 .selects {
     overflow: auto;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: transparent;
     width: 100%;
-    height: 200px;
+    height: 300px;
     font-size: 20px;
+    margin: auto;
+    margin-top: 45px;
 }
 
 .titles {
-    width: 99%;
+    width: 97%;
     text-align: center;
     font-weight: bolder;
-    margin: 1%;
+    font-size: 40px;
+    text-shadow: 0px 0px 4px rgb(7, 109, 7);
 }
 
 .options {
@@ -309,26 +316,69 @@ main::after {
     text-align: center;
     margin: auto;
     max-height: 100%;
-    border: 1px solid white;
-    width: 92%;
+    font-size: 30px;
+    color: white;
+    background-color: #0c0;
+    border: 1px solid rgb(65, 63, 63);
+    width: 40%;
     height: auto;
+    margin-bottom: 10px;
+    width: 35%;
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px white;
+    box-shadow: 0px 0px 3px #0c0;
 }
 
+.options:hover{
+    background-color: transparent;
+    border: 1px solid #0c0;
+    box-shadow: 0px 0px 10px #0c0 inset;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .selection{
+        font-size: 20px;
+    }
+
+    .labels{
+        font-size: 40px;
+        margin: auto;
+        padding-top: 15%;
+    }
+
+    .selects{
+        padding-left: 20px;
+        width: 95%;
+    }
+
+    .titles{
+        font-size: 30px;
+    }
+}
+
+@media (max-width : 600px) {
+    .selections{
+        width: 91.5%;
+    }
+}
 
 /* Estilos del scroll */
 
 .selects::-webkit-scrollbar {
-    width: 5px;
+    width: 25px;
     height: 5px;
     background-color: transparent;
 }
 
 .selects::-webkit-scrollbar-thumb {
-    background: rgb(255, 255, 255);
+    background: #0c0;
+    box-shadow: 0px 0px 5px #0c0;
 }
 
 .selects::-webkit-scrollbar-track {
     border-radius: 2px;
+    cursor: pointer;
 }
 
 
@@ -343,7 +393,6 @@ main::after {
     width: 150px;
     height: 50px;
     padding-bottom: 1%;
-    margin: 1%;
 }
 
 .menuButton {
@@ -388,11 +437,15 @@ main::after {
     padding: 10px 10px;
 }
 
-.buttonContainer {
+.button-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    width: 100%;
+    margin: auto;
+    position: relative;
+    top: -150px;
+    margin-top: 25px;
+    width: 60%;
 }
 
 .button-nav {
@@ -413,13 +466,6 @@ main::after {
     opacity: 0;
     height: 50px;
     display: inline-block;
-}
-
-
-/* Clase para controlar pagina actual */
-
-.noVisibility {
-    display: none;
 }
 
 
@@ -446,4 +492,37 @@ main::after {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 3px;
+}
+
+
+
+/*ANIMACIONES MEDIANTE CLASES Y KEYFRAMES*/
+
+/* .fade-in{
+    animation: fadeIn 2s ease-in-out normal 2s forwards;
+}
+
+.fade-out{
+    animation: fadeOut 1s ease-in-out normal 1s forwards;
+} */
+
+.no-visibility{
+    display: none;
+}
+
+
+@keyframes fadeIn {
+    0%{display:flex; opacity: 0; color: #060;}
+    35%{opacity: 0.7; color: #0c0;}
+    50%{opacity: 0.8; color:#090;}
+    75%{opacity: 0.25; color: #060;}
+    100%{opacity: 1; color: #0c0;}
+}
+
+@keyframes fadeOut {
+    0%{opacity: 1; color: #0c0;}
+    35%{opacity: 0.25; color: #060;}
+    50%{opacity: 0.8; color:#090;}
+    75%{opacity: 0.75; color: #0c0;}
+    100%{opacity: 0; color: #060; display: none;}
 }
