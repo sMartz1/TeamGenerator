@@ -87,7 +87,7 @@ main::after {
 .section {
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    min-height: 500px;
 }
 
 #section1 .button,
