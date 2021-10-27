@@ -16,7 +16,7 @@ function changePage(option) {
     switch (option) {
         case 0:
             currentPage--;
-            changeDom();
+            changeDom()
             break;
 
         case 1:
@@ -38,36 +38,38 @@ function changeDom() {
     switch (currentPage) {
         //Section 1
         case 0:
-            if (!s2.classList.contains("noVisibility")) {
-                s2.classList.add("noVisibility");
+            if (!s2.classList.contains("no-visibility")) {
+                changeFade(s2, 1)
             }
-            if (!s3.classList.contains("noVisibility")) {
-                s3.classList.add("noVisibility");
+            if (!s3.classList.contains("no-visibility")) {
+                changeFade(s3, 1)
             }
-            s1.classList.remove("noVisibility");
+            changeFade(s1, 0)
             break;
 
         //Section 2
         case 1:
             //Actualizamos opciones siempre que se vaya a visualizar section2
             createOptions();
-            if (!s1.classList.contains("noVisibility")) {
-                s1.classList.add("noVisibility");
+            if (!s1.classList.contains("no-visibility")) {
+                changeFade(s1, 1)
             }
-            if (!s3.classList.contains("noVisibility")) {
-                s3.classList.add("noVisibility");
+            if (!s3.classList.contains("no-visibility")) {
+
+                changeFade(s3, 1)
             }
-            s2.classList.remove("noVisibility");
+            s2.classList.remove("no-visibility");
+            changeFade(s2, 0)
             break;
         //Section 3
         case 2:
-            if (!s1.classList.contains("noVisibility")) {
-                s1.classList.add("noVisibility");
+            if (!s1.classList.contains("no-visibility")) {
+                changeFade(s1, 1)
             }
-            if (!s2.classList.contains("noVisibility")) {
-                s2.classList.add("noVisibility");
+            if (!s2.classList.contains("no-visibility")) {
+                changeFade(s2, 1)
             }
-            s3.classList.remove("noVisibility");
+            changeFade(s3, 0)
             break;
 
         default:
@@ -75,6 +77,24 @@ function changeDom() {
 
     }
 
+}
+
+//Animaciones para cambio de pagina
+function changeFade(label, option) {
+    if (option == 0) {
+        label.classList.remove("no-visibility");
+        /*         setTimeout(() => {
+                    label.classList.remove('fade-out')
+                }, 1000)
+                label.classList.add('fade-in') */
+
+    } else {
+        /*        label.classList.add('fade-out')
+               setTimeout(() => {
+       
+               }, 1000) */
+        label.classList.add("no-visibility");
+    }
 }
 
 /* ------- Funcionalidades Section 1 -------- */
@@ -339,30 +359,28 @@ function clearOptions() {
 
 //Se define para check el valor del slider de section 2
 let optionType = 0;
-let selectTeam = document.getElementById("select-team-container");
-let selectPlayer = document.getElementById("select-player-container");
-let sliderTarget = document.getElementById("slider");
 
-function sliderChange() {
+let selects = document.getElementsByClassName('selection')
+selects[0].addEventListener('click', targetOption);
+selects[1].addEventListener('click', targetOption);
 
-    if (optionType == 0) {
-        optionType = 1;
-        selectPlayer.classList.add("noVisibility");
-        selectTeam.classList.remove("noVisibility");
-        sliderTarget.classList.add("active-slider");
+function targetOption() {
+    let selectTeam = document.getElementById("select-team-container");
+    let selectPlayer = document.getElementById("select-player-container");
 
+    if (this == selects[1]) {
+        selectPlayer.classList.add("no-visibility");
+        selectTeam.classList.remove("no-visibility");
+        this.classList.add('selected')
+        selects[0].classList.remove('selected')
 
-
-    } else {
-        optionType = 0;
-        selectTeam.classList.add("noVisibility");
-        selectPlayer.classList.remove("noVisibility");
-        sliderTarget.classList.remove("active-slider");
+    } else if (this == selects[0]) {
+        selectTeam.classList.add("no-visibility");
+        selectPlayer.classList.remove("no-visibility");
+        this.classList.add('selected')
+        selects[1].classList.remove('selected')
     }
 }
-
-
-//Pruebas funciones randomizer for section 3
 
 //Devuelve un arr de numeros random cuyo maximo es el nº de players
 function generateRandomArr() {
@@ -397,6 +415,10 @@ function selectOption(option) {
     } else {
         makeByTeams(value);
     }
+
+
+    currentPage++;
+    changeDom();
 }
 
 //Esta funcion sera llamada iterativamente para crear los teams devolviendo el elemento html creado y montado

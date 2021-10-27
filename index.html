@@ -40,39 +40,39 @@
             <div class="button button-nav" onclick="changePage(1)">→</div>
         </section>
 
-        <section class="section noVisibility" id="section2">
+        <section class="section no-visibility" id="section2">
             <!--Esto contendra ambas opciones-->
             <div class="form">
-                <div class="slide" onclick="sliderChange()">
-                    <div class="borderSlider" id="slider">
-                        <div class="buttonSlider"></div>
-                    </div>
+                <div class="selections">
+                    <div class="selection selected">Por participante</div>
+                    <div class="selection">Por equipos</div>
                 </div>
                 <div class="interiorForm" id="select-player-container">
+
                     <p class="labels">Participantes por equipo</p>
                     <!--Este div se rellenara de forma dinamica desde el JS-->
+                    <p class="titles">Opciones</p>
                     <div class="selects" id="select-player">
-                        <p class="titles">Opciones</p>
-
                     </div>
                 </div>
-                <div class="interiorForm noVisibility" id="select-team-container">
+                <div class="interiorForm no-visibility" id="select-team-container">
                     <p class="labels">Numero de equipos</p>
                     <!--Este div se rellenara de forma dinamica desde el JS-->
+                    <p class="titles">Opciones</p>
                     <div class="selects" id="select-team">
-                        <p class="titles">Opciones</p>
                     </div>
+                </div>
+                <!--Botones-->
+                <div class="button-container">
+                    <div class="button button-nav" onclick="changePage(0)">←</div>
+                    <div class="button button-nav" onclick="changePage(1)">→</div>
                 </div>
             </div>
 
-            <!--Botones-->
-            <div class="buttonContainer">
-                <div class="button button-nav" onclick="changePage(0)">←</div>
-                <div class="button button-nav" onclick="changePage(1)">→</div>
-            </div>
+
         </section>
 
-        <section class="section noVisibility" id="section3">
+        <section class="section no-visibility" id="section3">
             <!--Aqui deberian mostrarse los equipos-->
             <div class="boxText"></div>
 
