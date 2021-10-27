@@ -87,6 +87,8 @@ main::after {
 .section {
     display: flex;
     flex-direction: column;
+    margin-right: 0px;
+    margin-left: 0px;
     min-height: 500px;
 }
 
@@ -102,7 +104,7 @@ main::after {
     margin-top: 60px;
 }
 
-#section2 {}
+#section3 {}
 
 .control {
     display: flex;
@@ -173,7 +175,6 @@ main::after {
 
 .boxText::-webkit-scrollbar-thumb {
     background: #0c0;
-    box-shadow: 0px 0px 5px #0c0;
 }
 
 .boxText::-webkit-scrollbar-track {
