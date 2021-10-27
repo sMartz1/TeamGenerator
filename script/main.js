@@ -285,13 +285,7 @@ function removePlayer(player) {
 
 
     //Eliminamos card.
-    if (playerBoards[0].children.item(player)) {
-        playerBoards[0].children.item(player).remove();
-    }
-
-    if (playerBoards[1].children.item(player)) {
-        playerBoards[1].children.item(player).remove();
-    }
+    player.parentNode.remove();
 }
 
 //Esta funcion eliminaria todos los players tanto en el array como en el boxText
