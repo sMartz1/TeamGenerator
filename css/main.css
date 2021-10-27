@@ -457,13 +457,13 @@ header {}
 
 /*ANIMACIONES MEDIANTE CLASES Y KEYFRAMES*/
 
-.fade-in{
+/* .fade-in{
     animation: fadeIn 2s ease-in-out normal 2s forwards;
 }
 
 .fade-out{
     animation: fadeOut 1s ease-in-out normal 1s forwards;
-}
+} */
 
 .no-visibility{
     display: none;

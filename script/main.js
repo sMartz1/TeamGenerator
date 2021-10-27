@@ -83,16 +83,16 @@ function changeDom() {
 function changeFade(label, option) {
     if (option == 0) {
         label.classList.remove("no-visibility");
-        setTimeout(() => {
-            label.classList.remove('fade-out')
-        }, 1000)
-        label.classList.add('fade-in')
+        /*         setTimeout(() => {
+                    label.classList.remove('fade-out')
+                }, 1000)
+                label.classList.add('fade-in') */
 
     } else {
-        label.classList.add('fade-out')
-        setTimeout(() => {
-
-        }, 1000)
+        /*        label.classList.add('fade-out')
+               setTimeout(() => {
+       
+               }, 1000) */
         label.classList.add("no-visibility");
     }
 }
