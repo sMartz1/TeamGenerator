@@ -94,6 +94,10 @@ main::after {
     margin: auto;
 }
 
+#section2{
+    width: 100%;
+}
+
 #section1 {
     margin-top: 60px;
 }
