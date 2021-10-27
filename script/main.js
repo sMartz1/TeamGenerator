@@ -162,12 +162,48 @@ function addPlayer(aux = "") {
     }
     //Recibimos el valor del input y lo introducimos a players
     //Comprobamos el tamaño del nombre para evitar missclick
-    if (value.length < 2) {
+    if (value.length <= 2) {
         return 'Nombre no valido'
     }
-    players.push(value);
+    let filteredValue = normalizeName(value)
+    players.push(filteredValue);
 
-    drawPlayer(value, 0);
+    drawPlayer(filteredValue, 0);
+}
+
+/**
+ * Comprobamos si metieron nombre y apellidos
+ * Si es asi abreviaremos todo que tenga mayor length que 2
+ * Si no es asi comprobaremos unicamente la cadena entrante con un microfor
+ */
+function normalizeName(value) {
+    let count = 0;
+    let filteredName = value.split(' ');
+
+    if (filteredName.length > 1) {
+        filteredName = filteredName.reduce((acc, el, i) => {
+            if (el.length > 2) {
+                if (count >= 4) {
+                    return acc;
+                }
+
+                if (i == 1) {
+                    count++;
+                    return acc + ' ' + el.charAt(0).toUpperCase();
+                } else {
+                    count++;
+                    return acc + el.charAt(0).toUpperCase();
+                }
+            }
+            return acc
+        })
+    } else if (value.length > 10) {
+        filteredName = '';
+        for (let i = 0; i < 10; i++) {
+            filteredName += value.charAt(i)
+        }
+    }
+    return filteredName.toString();
 }
 
 //Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
@@ -423,10 +459,11 @@ function selectOption(option) {
 
 //Esta funcion sera llamada iterativamente para crear los teams devolviendo el elemento html creado y montado
 //Si queremos agregar valores a la creacion del grupo bastaria tocar los valores que recibe y usa drawTeam()
-function drawTeam() {
+function drawTeam(numered) {
     let divElement = document.createElement("div");
     let title = document.createElement("div");
-    title.innerHTML = "Nombre de equipo";
+    numered = parseInt(numered) + 1
+    title.innerHTML = "Equipo " + numered;
     title.classList.add("nameTeam")
     divElement.classList.add("team");
     divElement.appendChild(title);
@@ -442,7 +479,7 @@ function makeByPlayers(value) {
     let index = 0;
 
     for (let i = 0; i < players.length / value; i++) {
-        let divElement = drawTeam(); //Dibujamos equipo
+        let divElement = drawTeam(i); //Dibujamos equipo
 
         for (let j = 0; j < value; j++) {
             if (randoms[index] == undefined) {
@@ -466,7 +503,7 @@ function makeByTeams(value) {
     let index = 0;
 
     for (let i = 0; i < value; i++) {
-        let divElement = drawTeam(); //Dibujamos equipo
+        let divElement = drawTeam(i); //Dibujamos equipo
 
         for (let j = 0; j < players.length / value; j++) {
             if (randoms[index] == undefined) {
