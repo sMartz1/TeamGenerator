@@ -311,7 +311,7 @@ main::before {
 }
 
 .player>p:hover {
-    background-color: rgb(222, 222, 222, 0.05);
+    background-color: rgba(47, 98, 64, 0.5);
 }
 
 .player>p:focus {

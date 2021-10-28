@@ -106,6 +106,7 @@ let valores = document.getElementsByClassName("text");
 valores[0].addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
         addPlayer();
+
     }
 })
 
@@ -155,6 +156,7 @@ function addPlayer(aux = "") {
     if (aux.length == 0) {
 
         value = valores[0].value;
+        valores[0].value = "";
 
     } else {
 
