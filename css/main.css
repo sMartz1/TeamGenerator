@@ -118,7 +118,7 @@ main::before {
     flex-direction: column;
     margin-right: 0px;
     margin-left: 0px;
-    min-height: 500px;
+    min-height: 90%;
 }
 
 #section3 .button {
@@ -575,6 +575,38 @@ main::before {
     .team {
         width: 100%;
     }
+    
+}
+/*----------RESPONSIVE SECTION HEIGHT-----------*/
+@media (max-height:780px) {
+
+    .boxText{
+        height: 10px;
+        min-height: 250px;
+    }
+}
+
+@media (max-height:710px) {
+    .section{
+        height: 40px;
+        min-height: 10px;
+    }
+
+    .button{
+        margin-top: 0px;
+    }
+
+    .boxText{
+        height: 10px;
+        min-height: 250px;
+    }
+}
+
+@media (max-height:590px) {
+    .boxText{
+        height: 10px;
+        min-height: 150px;
+    }
 }
 
 
@@ -646,7 +678,10 @@ main::before {
 
 @media (max-width:400px) {
     header h1 {
-        font-size: 40px;
+        font-size: 30px;
+    }
+    header .logo{
+        width: 40px;
     }
     .control {
         width: 100%;
