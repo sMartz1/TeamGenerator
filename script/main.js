@@ -47,7 +47,7 @@ function changeDom() {
             changeFade(s1, 0)
             break;
 
-        //Section 2
+            //Section 2
         case 1:
             //Actualizamos opciones siempre que se vaya a visualizar section2
             createOptions();
@@ -61,7 +61,7 @@ function changeDom() {
             s2.classList.remove("no-visibility");
             changeFade(s2, 0)
             break;
-        //Section 3
+            //Section 3
         case 2:
             if (!s1.classList.contains("no-visibility")) {
                 changeFade(s1, 1)
@@ -103,7 +103,7 @@ function changeFade(label, option) {
 let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function (e) {
+valores[0].addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
         addPlayer();
     }
@@ -121,20 +121,20 @@ function getPlayersByFile(e) {
     //Usamos file reader para acceder al archivo
     let reader = new FileReader();
     //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
-    reader.onload = function (e) {
-        //en .result encontramos la string resultante de leer el archivo.
-        let content = e.target.result;
-        //Parto por saltos de linea los nombres para recibirlos como array
-        let arrGenerado = content.split(/\r?\n/g);
-        //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
-        //De momento dejamos en log el array
-        for (let i = 0; i < arrGenerado.length; i++) {
-            addPlayer(arrGenerado[i]);
+    reader.onload = function(e) {
+            //en .result encontramos la string resultante de leer el archivo.
+            let content = e.target.result;
+            //Parto por saltos de linea los nombres para recibirlos como array
+            let arrGenerado = content.split(/\r?\n/g);
+            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+            //De momento dejamos en log el array
+            for (let i = 0; i < arrGenerado.length; i++) {
+                addPlayer(arrGenerado[i]);
+
+            }
 
         }
-
-    }
-    //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
     document.getElementById("inputF").value = "";
 }
@@ -251,14 +251,14 @@ function modifyPlayer(player) {
         if (player.isContentEditable) {
 
             //Evento que detectara si el usuario pulsa ENTER
-            player.addEventListener("keydown", function (e) {
+            player.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     stopEdit(player, preValue);
                 }
             })
 
             //Evento que controlara el valor si el elemento pierde el foco
-            player.addEventListener('blur', function (e) {
+            player.addEventListener('blur', function(e) {
                 stopEdit(player, preValue);
             })
         }
