@@ -47,7 +47,7 @@ function changeDom() {
             changeFade(s1, 0)
             break;
 
-            //Section 2
+        //Section 2
         case 1:
             //Actualizamos opciones siempre que se vaya a visualizar section2
             createOptions();
@@ -61,7 +61,7 @@ function changeDom() {
             s2.classList.remove("no-visibility");
             changeFade(s2, 0)
             break;
-            //Section 3
+        //Section 3
         case 2:
             if (!s1.classList.contains("no-visibility")) {
                 changeFade(s1, 1)
@@ -103,7 +103,7 @@ function changeFade(label, option) {
 let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function(e) {
+valores[0].addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         addPlayer();
 
@@ -122,20 +122,20 @@ function getPlayersByFile(e) {
     //Usamos file reader para acceder al archivo
     let reader = new FileReader();
     //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
-    reader.onload = function(e) {
-            //en .result encontramos la string resultante de leer el archivo.
-            let content = e.target.result;
-            //Parto por saltos de linea los nombres para recibirlos como array
-            let arrGenerado = content.split(/\r?\n/g);
-            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
-            //De momento dejamos en log el array
-            for (let i = 0; i < arrGenerado.length; i++) {
-                addPlayer(arrGenerado[i]);
-
-            }
+    reader.onload = function (e) {
+        //en .result encontramos la string resultante de leer el archivo.
+        let content = e.target.result;
+        //Parto por saltos de linea los nombres para recibirlos como array
+        let arrGenerado = content.split(/\r?\n/g);
+        //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+        //De momento dejamos en log el array
+        for (let i = 0; i < arrGenerado.length; i++) {
+            addPlayer(arrGenerado[i]);
 
         }
-        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+
+    }
+    //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
     document.getElementById("inputF").value = "";
 }
@@ -168,9 +168,13 @@ function addPlayer(aux = "") {
         return 'Nombre no valido'
     }
     let filteredValue = normalizeName(value)
-    players.push(filteredValue);
 
-    drawPlayer(filteredValue, 0);
+    if (!players.includes(filteredValue)) {
+        players.push(filteredValue);
+        drawPlayer(filteredValue, 0);
+    } else {
+        isDuplicated();
+    }
 }
 
 /**
@@ -206,6 +210,18 @@ function normalizeName(value) {
         }
     }
     return filteredName.toString();
+}
+
+//Animacion para prevenir la entrada de nombres duplicados
+function isDuplicated() {
+    valores[0].style.borderBottom = '1px solid red';
+    valores[0].style.textAlign = 'center'
+    valores[0].value = '!Nombre invalido!'
+    setTimeout(() => {
+        valores[0].style.borderBottom = '1px solid #0c0';
+        valores[0].style.textAlign = 'left'
+        valores[0].value = '';
+    }, 1000);
 }
 
 //Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
@@ -253,14 +269,14 @@ function modifyPlayer(player) {
         if (player.isContentEditable) {
 
             //Evento que detectara si el usuario pulsa ENTER
-            player.addEventListener("keydown", function(e) {
+            player.addEventListener("keydown", function (e) {
                 if (e.keyCode === 13) {
                     stopEdit(player, preValue);
                 }
             })
 
             //Evento que controlara el valor si el elemento pierde el foco
-            player.addEventListener('blur', function(e) {
+            player.addEventListener('blur', function (e) {
                 stopEdit(player, preValue);
             })
         }
@@ -475,6 +491,10 @@ function makeByPlayers(value) {
     let index = 0;
 
     for (let i = 0; i < players.length / value; i++) {
+        if (randoms[index + 1] == undefined) {
+            return preventLastPlayer(randoms, index)
+        }
+
         let divElement = drawTeam(i); //Dibujamos equipo
 
         for (let j = 0; j < value; j++) {
@@ -499,6 +519,10 @@ function makeByTeams(value) {
     let index = 0;
 
     for (let i = 0; i < value; i++) {
+        if (randoms[index + 1] == undefined) {
+            return preventLastPlayer(randoms, index)
+        }
+
         let divElement = drawTeam(i); //Dibujamos equipo
 
         for (let j = 0; j < players.length / value; j++) {
@@ -513,4 +537,9 @@ function makeByTeams(value) {
         playerBoards[1].appendChild(divElement);
 
     }
+}
+
+function preventLastPlayer(randoms, index) {
+    let player = drawPlayer(randoms[index], 1);
+    playerBoards[1].lastChild.appendChild(player);
 }
