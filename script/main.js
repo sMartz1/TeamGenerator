@@ -227,7 +227,6 @@ function isDuplicated() {
         valores[0].value = '';
         valores[0].disabled = false;
         valores[0].focus();
-
     }, 1000);
 
 }
@@ -474,7 +473,7 @@ function selectOption(option) {
         makeByTeams(value);
     }
 
-
+    console.log(list);
     currentPage++;
     changeDom();
 }
@@ -493,6 +492,9 @@ function drawTeam(numered) {
     return divElement
 }
 
+//Una variable para poder hacer copy paste de los equipos
+let list = [];
+
 //Esta funcion los repartira por jugadores
 function makeByPlayers(value) {
     //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
@@ -500,26 +502,34 @@ function makeByPlayers(value) {
     let randoms = randomTeams();
     let index = 0;
 
-    for (let i = 0; i < players.length / value; i++) {
-        if (randoms[index + 1] == undefined) {
-            return preventLastPlayer(randoms, index)
-        }
+    let aux = Math.round(players.length / value);
 
+    for (let i = 0; i < aux; i++) {
         let divElement = drawTeam(i); //Dibujamos equipo
-
-        for (let j = 0; j < value; j++) {
+        list.push(divElement.firstElementChild.innerText)
+        let team = [];
+        for (let j = 0; j < Math.round(players.length / aux); j++) {
             if (randoms[index] == undefined) {
                 break;
             }
+            team.push(randoms[index]);
             let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
             divElement.appendChild(player)
             index++;
-        }
 
+        }
+        list.push(team);
+        if (randoms[index + 1] == undefined) {
+            console.log('Makebyplayers')
+            preventLastPlayer(randoms, index)
+            index++
+        }
         playerBoards[1].appendChild(divElement);
 
     }
-
+    if (playerBoards[1].lastElementChild.childNodes.length <= 1) {
+        playerBoards[1].lastElementChild.remove();
+    }
 }
 
 //Esta los repartira por equipos
@@ -528,30 +538,43 @@ function makeByTeams(value) {
     let randoms = randomTeams();
     let index = 0;
 
-    for (let i = 0; i < value; i++) {
-        if (randoms[index + 1] == undefined) {
-            return preventLastPlayer(randoms, index)
-        }
+    let aux = Math.round(players.length / value);
 
+    for (let i = 0; i < value; i++) {
         let divElement = drawTeam(i); //Dibujamos equipo
 
-        for (let j = 0; j < players.length / value; j++) {
+        let team = [];
+        for (let j = 0; j < aux; j++) {
             if (randoms[index] == undefined) {
                 break;
             }
+            team.push(randoms[index])
             let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
             divElement.appendChild(player)
             index++;
+            if (randoms[index + 1] == undefined) {
+                console.log('Makebyteams')
+                preventLastPlayer(randoms, index)
+                index++;
+            }
         }
+        list.push(team);
 
         playerBoards[1].appendChild(divElement);
-
     }
+
+    if (playerBoards[1].lastElementChild.childNodes.length <= 1) {
+        playerBoards[1].lastElementChild.remove();
+    }
+
 }
 
 function preventLastPlayer(randoms, index) {
-    let player = drawPlayer(randoms[index], 1);
-    playerBoards[1].lastChild.appendChild(player);
+    if (randoms[index] != undefined) {
+        let player = drawPlayer(randoms[index], 1);
+        list[list.length - 3].push(randoms[index]);
+        playerBoards[1].lastElementChild.appendChild(player);
+    }
 }
 
 //Para testear rapido
@@ -567,6 +590,5 @@ window.addEventListener("load", e => {
     let modalWelcome = document.getElementsByClassName("modal-welcome")[0];
     setTimeout(() => modalWelcome.remove(), 3000);
     setTimeout(() => main.classList.remove("no-visibility"), 3000);
-
-
 })
+
