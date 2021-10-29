@@ -226,35 +226,29 @@ function isDuplicated() {
 
 //Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
 function drawPlayer(value, option) {
-    //Se crea div contenedor de la card
-    let container = document.createElement('div');
-    container.classList.add("player");
+    if (value != undefined) {
+        let container = document.createElement('div');
+        container.classList.add("player");
 
-    //Se crea P para contener el nombre.
-    let player = document.createElement('p');
-    //Convertimos el valor a un textNode y creamos una nueva etiqueta para juntar ambos
-    value = document.createTextNode(value);
-    player.appendChild(value);
-    //Añadimos atributos a nuestras etiquetas
-    player.setAttribute("onclick", "modifyPlayer(this)");
-    //player.setAttribute("class", "mod"); Dejo comentado por si necesitamos añadir clase en p en un futuro
+        let player = document.createElement('p');
+        value = document.createTextNode(value);
+        player.appendChild(value);
+        player.setAttribute("onclick", "modifyPlayer(this)");
 
-    //Se crea span
-    let close = document.createElement("span");
-    close.innerHTML = "X";
-    close.setAttribute("onclick", "removePlayer(this)");
+        let close = document.createElement("span");
+        close.innerHTML = "X";
+        close.setAttribute("onclick", "removePlayer(this)");
 
-    //Construccion de card con elementos anteriores
-    container.appendChild(player);
-    container.appendChild(close);
+        container.appendChild(player);
+        container.appendChild(close);
 
-    //Si option viene a 0 dibujara el nombre en el section 1
-    //Si viene a 1 devolvera el jugador dibujado para meterlo en la seleccion de teams
-    if (option == 0) {
-        playerBoards[0].appendChild(container);
-    } else if (option == 1) {
-        return container;
+        if (option == 0) {
+            playerBoards[0].appendChild(container);
+        } else if (option == 1) {
+            return container;
+        }
     }
+
 }
 
 //Recoge el valor, lo busca en el array y lo sobreescribe mas tarde
@@ -542,4 +536,11 @@ function makeByTeams(value) {
 function preventLastPlayer(randoms, index) {
     let player = drawPlayer(randoms[index], 1);
     playerBoards[1].lastChild.appendChild(player);
+}
+
+//Para testear rapido
+function renovar(numero) {
+    for (let i = 0; i < numero; i++) {
+        addPlayer(`random${i}`)
+    }
 }

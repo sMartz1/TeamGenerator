@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+main{
+    width: 100%;
+}
+
 body {
     background-color: #000;
     overflow: hidden;
@@ -118,7 +122,7 @@ main::before {
     flex-direction: column;
     margin-right: 0px;
     margin-left: 0px;
-    min-height: 500px;
+    min-height: 90%;
 }
 
 #section3 .button {
@@ -127,6 +131,10 @@ main::before {
 
 #section2 {
     width: 100%;
+}
+
+#section2 .selection{
+    margin-top: 30px;
 }
 
 #section1 {
@@ -419,6 +427,7 @@ main::before {
 @media (max-width: 600px) {
     .selections {
         width: 91.5%;
+        font-size: 20px;
     }
 }
 
@@ -428,7 +437,7 @@ main::before {
         padding-right: 0px;
         margin: 0px;
         margin-left: 0px;
-        width: 90%;
+        width: 70%;
         align-self: center;
     }
     .selection {
@@ -437,6 +446,7 @@ main::before {
         padding: auto;
     }
     .labels {
+        margin-top: 20px;
         font-size: 20px;
     }
     .titles {
@@ -444,6 +454,10 @@ main::before {
     }
     .selects {
         width: 93%;
+    }
+
+    .text{
+        font-size: 200%;
     }
 }
 
@@ -566,6 +580,21 @@ main::before {
     gap: 1%;
 }
 
+.team::-webkit-scrollbar {
+    width: 25px;
+    height: 5px;
+    background-color: transparent;
+}
+
+.team::-webkit-scrollbar-thumb {
+    background: #0c0;
+}
+
+.team::-webkit-scrollbar-track {
+    border-radius: 2px;
+    cursor: pointer;
+}
+
 .nameTeam {
     font-size: 20px;
     background-color: #0c0;
@@ -577,9 +606,217 @@ main::before {
     max-height: 38px;
 }
 
+@media (max-width:1290px){
+    .team{
+        max-height: 1000px;
+        overflow-y: scroll;
+    }
+
+    .options{
+        width: 50%;
+    }
+}
+
 @media (max-width:590px) {
     .team {
         width: 100%;
+    }
+    
+}
+
+@media (max-width:370px){
+.selection{
+    width: 40%;
+}
+}
+
+@media (max-width:300px){
+    .selection{
+        width: 28%;
+    }
+
+    .boxText{
+        margin-left: -38px;
+    }
+
+    .boxText{
+        width: 140%;
+    }
+}
+/*----------RESPONSIVE SECTION HEIGHT-----------*/
+@media (max-height:850px) {
+    #section2{
+        margin-top: 220px;
+        height: 30px;
+    }
+
+    .labels{
+        font-size: 30px;
+    }
+
+    .titles{
+        font-size: 20px;
+    }
+
+    .selects{
+        height: 200px;
+    }
+}
+
+@media (max-height:796px) {
+
+    .boxText{
+        height: 10px;
+        min-height: 250px;
+    }
+
+    #section2{
+        height: 20px;
+        margin-top: 170px;
+    }
+
+    .interiorForm{
+        height: 500px;
+    }
+
+    .selects{
+        height: 100px;
+    }
+
+    .selection{
+        margin-top: 190px;
+    }
+
+    .boxText, .boxText:nth-of-type(1){
+        height: 10px;
+        min-height: 250px;
+        height: 270px;
+    }
+
+    #section3 .button{
+        margin-top: -120px;
+    }
+}
+
+@media (max-height:710px) {
+    .section{
+        height: 40px;
+        min-height: 10px;
+    }
+
+    .button{
+        margin-top: 30px;
+    }
+
+    .boxText, .boxText:nth-of-type(1){
+        height: 10px;
+        min-height: 250px;
+        height: 270px;
+    }
+
+    #section3 .button{
+        margin-top: -240px;
+    }
+}
+
+@media (max-height:650px){
+
+    #section2 .button{
+        width: 50px;
+        height: 30px;
+    }
+    
+    #section2{
+        height: 10px;
+        margin-top: 110px;
+    }
+
+    .labels{
+        font-size: 20px;
+        margin-top: -15px;
+    }
+
+    .titles{
+        font-size: 20px;
+    }
+
+}
+
+@media (max-height:590px) {
+
+    #section1 .button{
+        width: 50px;
+        height: 50px;
+    }
+
+    .boxText{
+        height: 10px;
+        min-height: 150px;
+    }
+
+    .interiorForm{
+        height: 240px;
+    }
+
+    #section2 .button{
+        width: 50px;
+        height: 50px;
+    }
+
+    .labels{
+        font-size: 20px;
+        margin-top: -25px;
+        display: none;
+    }
+
+    .titles{
+        margin-top: -30px;
+        font-size: 20px;
+        display: none;
+    }
+
+    #section2{
+        height: 10px;
+        margin-top: 70px;
+    }
+
+    .selection{
+        height: 5px;
+        top: -120p;
+        padding: 20px;
+        padding-bottom: 40px;
+        font-size: 15px;
+    }
+
+    .selections{
+        width: 90%;
+        top: -24px;
+    }
+
+    #section3 .button{
+        margin-top: -340px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-height:480px){
+    .labels{
+        display: none;
+    }
+
+    .interiorForm{
+        height: 190px;
+    }
+
+    #section2 .button{
+        margin-top: 5px;
+    }
+}
+
+@media (max-height:400px) {
+    #section1 .button{
+        margin-top: 5px;
     }
 }
 
@@ -652,7 +889,10 @@ main::before {
 
 @media (max-width:400px) {
     header h1 {
-        font-size: 40px;
+        font-size: 30px;
+    }
+    header .logo{
+        width: 40px;
     }
     .control {
         width: 100%;
