@@ -428,7 +428,7 @@ main::before {
         padding-right: 0px;
         margin: 0px;
         margin-left: 0px;
-        width: 90%;
+        width: 70%;
         align-self: center;
     }
     .selection {
@@ -577,12 +577,44 @@ main::before {
     }
     
 }
+
+@media (max-width:300px){
+    .selection{
+        width: 23%;
+    }
+}
 /*----------RESPONSIVE SECTION HEIGHT-----------*/
 @media (max-height:780px) {
 
     .boxText{
         height: 10px;
         min-height: 250px;
+    }
+
+    #section2{
+        height: 20px;
+    }
+
+    .interiorForm{
+        height: 500px;
+    }
+
+    .selects{
+        height: 100px;
+    }
+
+    .selection{
+        margin-top: 190px;
+    }
+
+    .boxText, .boxText:nth-of-type(1){
+        height: 10px;
+        min-height: 250px;
+        height: 390px;
+    }
+
+    #section3 .button{
+        margin-top: -140px;
     }
 }
 
@@ -596,16 +628,65 @@ main::before {
         margin-top: 0px;
     }
 
-    .boxText{
+    .boxText, .boxText:nth-of-type(1){
         height: 10px;
         min-height: 250px;
+        height: 270px;
+    }
+
+    #section3 .button{
+        margin-top: -240px;
     }
 }
 
 @media (max-height:590px) {
+
+    #section1 .button{
+        width: 50px;
+        height: 50px;
+    }
+
     .boxText{
         height: 10px;
         min-height: 150px;
+    }
+
+    .interiorForm{
+        height: 240px;
+    }
+
+    #section2 .button{
+        width: 60px;
+        height: 40px;
+    }
+
+    .labels{
+        font-size: 20px;
+        margin-top: -45px;
+    }
+
+    .titles{
+        font-size: 20px;
+    }
+
+    #section2{
+        height: 10px;
+        margin-top: -30px;
+    }
+
+    .selection{
+        height: 5px;
+        top: -120p;
+    }
+
+    .selections{
+        top: -24px;
+    }
+
+    #section3 .button{
+        margin-top: -340px;
+        width: 50px;
+        height: 50px;
     }
 }
 
