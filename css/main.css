@@ -455,6 +455,10 @@ main::before {
     .selects {
         width: 93%;
     }
+
+    .text{
+        font-size: 200%;
+    }
 }
 
 @media (max-width:370px) {
@@ -600,6 +604,10 @@ main::before {
     .team{
         max-height: 1000px;
         overflow-y: scroll;
+    }
+
+    .options{
+        width: 50%;
     }
 }
 
