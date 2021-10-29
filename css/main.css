@@ -944,3 +944,63 @@ main::before {
         transform: scale(1, 1);
     }
 }
+
+.change-page-animation {
+    animation: change-page 1s;
+}
+
+@keyframes change-page {
+    0% {
+        opacity: 0.7;
+    }
+    3% {
+        opacity: 0.1;
+        transform: scale(1, 0.8);
+    }
+    4% {
+        opacity: 0.2;
+        transform: scale(1, 1);
+    }
+    5% {
+        opacity: 0.7;
+        transform: scale(1, 1.2);
+    }
+    6% {
+        opacity: 0.3;
+        transform: scale(1, 1);
+    }
+    25% {
+        transform: scale(1, 1);
+    }
+    26% {
+        opacity: 0.1;
+        transform: scale(2, 0.5);
+    }
+    26.5% {
+        opacity: 0;
+        transform: scale(4, 0.2);
+    }
+    27% {
+        opacity: 0.2;
+        transform: scale(2, 0.5);
+    }
+    28% {
+        opacity: 0.7;
+        transform: scale(1, 1);
+    }
+    65% {
+        transform: scale(1, 1);
+    }
+    65.5% {
+        transform: scale(0.5, 3);
+    }
+    66% {
+        transform: scale(1, 1);
+    }
+    80% {
+        opacity: 0.7;
+    }
+    81% {
+        opacity: 0.05;
+    }
+}

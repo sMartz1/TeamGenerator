@@ -1,6 +1,6 @@
 //Asumimos que la pagina de entrada es 0
 let currentPage = 0;
-
+let main = document.getElementsByTagName("main")[0];
 let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
 let s3 = document.getElementById("section3");
@@ -34,7 +34,7 @@ function changePage(option) {
 //Dependiendo del valor de currentPage, dejara el resto de secciones en display:none para ello creo la clase con display none en css
 // De tal manera siempre que queramos modificar visibilidad de una capa, añadimos o quitamos dicha clase
 function changeDom() {
-
+    main.classList.add("change-page-animation");
     switch (currentPage) {
         //Section 1
         case 0:
@@ -47,7 +47,7 @@ function changeDom() {
             changeFade(s1, 0)
             break;
 
-        //Section 2
+            //Section 2
         case 1:
             //Actualizamos opciones siempre que se vaya a visualizar section2
             createOptions();
@@ -58,10 +58,9 @@ function changeDom() {
 
                 changeFade(s3, 1)
             }
-            s2.classList.remove("no-visibility");
             changeFade(s2, 0)
             break;
-        //Section 3
+            //Section 3
         case 2:
             if (!s1.classList.contains("no-visibility")) {
                 changeFade(s1, 1)
@@ -79,21 +78,25 @@ function changeDom() {
 
 }
 
+//change-page-animation
 //Animaciones para cambio de pagina
+
 function changeFade(label, option) {
     if (option == 0) {
-        label.classList.remove("no-visibility");
-        /*         setTimeout(() => {
-                    label.classList.remove('fade-out')
-                }, 1000)
-                label.classList.add('fade-in') */
+
+        setTimeout(() => {
+            label.classList.remove("no-visibility");
+            main.classList.remove("change-page-animation");
+        }, 200);
+
+
+
+
+
 
     } else {
-        /*        label.classList.add('fade-out')
-               setTimeout(() => {
-       
-               }, 1000) */
-        label.classList.add("no-visibility");
+        setTimeout(() => label.classList.add("no-visibility"), 200);
+
     }
 }
 
@@ -103,7 +106,7 @@ function changeFade(label, option) {
 let valores = document.getElementsByClassName("text");
 //De esta manera detectamos el evento y lo recogemos en e para comprobar el key code
 //Aqui el Enter en este elemento añadira un nuevo player
-valores[0].addEventListener("keydown", function (e) {
+valores[0].addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
         addPlayer();
 
@@ -122,20 +125,20 @@ function getPlayersByFile(e) {
     //Usamos file reader para acceder al archivo
     let reader = new FileReader();
     //Un controlador para el evento load. Este evento se activa cada vez que la operación de lectura se ha completado satisfactoriamente.
-    reader.onload = function (e) {
-        //en .result encontramos la string resultante de leer el archivo.
-        let content = e.target.result;
-        //Parto por saltos de linea los nombres para recibirlos como array
-        let arrGenerado = content.split(/\r?\n/g);
-        //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
-        //De momento dejamos en log el array
-        for (let i = 0; i < arrGenerado.length; i++) {
-            addPlayer(arrGenerado[i]);
+    reader.onload = function(e) {
+            //en .result encontramos la string resultante de leer el archivo.
+            let content = e.target.result;
+            //Parto por saltos de linea los nombres para recibirlos como array
+            let arrGenerado = content.split(/\r?\n/g);
+            //Tenemos la variable arrGenerado con los players del .txt para su futuro uso.
+            //De momento dejamos en log el array
+            for (let i = 0; i < arrGenerado.length; i++) {
+                addPlayer(arrGenerado[i]);
+
+            }
 
         }
-
-    }
-    //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
+        //Se le pasa archivo a leer, si lo lee correctamente haria trigger en el .onload definido anteriormente.
     reader.readAsText(file);
     document.getElementById("inputF").value = "";
 }
@@ -263,14 +266,14 @@ function modifyPlayer(player) {
         if (player.isContentEditable) {
 
             //Evento que detectara si el usuario pulsa ENTER
-            player.addEventListener("keydown", function (e) {
+            player.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     stopEdit(player, preValue);
                 }
             })
 
             //Evento que controlara el valor si el elemento pierde el foco
-            player.addEventListener('blur', function (e) {
+            player.addEventListener('blur', function(e) {
                 stopEdit(player, preValue);
             })
         }
@@ -544,3 +547,13 @@ function renovar(numero) {
         addPlayer(`random${i}`)
     }
 }
+
+//Evento en carga de pagina
+window.addEventListener("load", e => {
+    let main = document.getElementsByTagName("main")[0];
+    let modalWelcome = document.getElementsByClassName("modal-welcome")[0];
+    setTimeout(() => modalWelcome.remove(), 3000);
+    setTimeout(() => main.classList.remove("no-visibility"), 3000);
+
+
+})
