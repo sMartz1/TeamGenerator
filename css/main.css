@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+main{
+    width: 100%;
+}
+
 body {
     background-color: #000;
     overflow: hidden;
@@ -614,7 +618,15 @@ main::before {
 
 @media (max-width:300px){
     .selection{
-        width: 23%;
+        width: 28%;
+    }
+
+    .boxText{
+        margin-left: -38px;
+    }
+
+    .boxText{
+        width: 140%;
     }
 }
 /*----------RESPONSIVE SECTION HEIGHT-----------*/
@@ -784,7 +796,13 @@ main::before {
     }
 
     #section2 .button{
-        margin-top: 10px;
+        margin-top: 5px;
+    }
+}
+
+@media (max-height:400px) {
+    #section1 .button{
+        margin-top: 5px;
     }
 }
 
