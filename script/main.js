@@ -543,3 +543,10 @@ function preventLastPlayer(randoms, index) {
     let player = drawPlayer(randoms[index], 1);
     playerBoards[1].lastChild.appendChild(player);
 }
+
+//Para testear rapido
+function renovar(numero) {
+    for (let i = 0; i < numero; i++) {
+        addPlayer(`random${i}`)
+    }
+}
