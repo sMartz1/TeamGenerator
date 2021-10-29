@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-main{
+main {
     width: 100%;
 }
 
@@ -133,7 +133,7 @@ main::before {
     width: 100%;
 }
 
-#section2 .selection{
+#section2 .selection {
     margin-top: 30px;
 }
 
@@ -455,8 +455,7 @@ main::before {
     .selects {
         width: 93%;
     }
-
-    .text{
+    .text {
         font-size: 200%;
     }
 }
@@ -606,13 +605,12 @@ main::before {
     max-height: 38px;
 }
 
-@media (max-width:1290px){
-    .team{
+@media (max-width:1290px) {
+    .team {
         max-height: 1000px;
         overflow-y: scroll;
     }
-
-    .options{
+    .options {
         width: 50%;
     }
 }
@@ -621,201 +619,173 @@ main::before {
     .team {
         width: 100%;
     }
-    
 }
 
-@media (max-width:370px){
-.selection{
-    width: 40%;
-}
+@media (max-width:370px) {
+    .selection {
+        width: 40%;
+    }
 }
 
-@media (max-width:300px){
-    .selection{
+@media (max-width:300px) {
+    .selection {
         width: 28%;
     }
-
-    .boxText{
+    .boxText {
         margin-left: -38px;
     }
-
-    .boxText{
+    .boxText {
         width: 140%;
     }
 }
+
+
 /*----------RESPONSIVE SECTION HEIGHT-----------*/
+
 @media (max-height:850px) {
-    #section2{
+    #section2 {
         margin-top: 220px;
         height: 30px;
     }
-
-    .labels{
+    .labels {
         font-size: 30px;
     }
-
-    .titles{
+    .titles {
         font-size: 20px;
     }
-
-    .selects{
+    .selects {
         height: 200px;
     }
 }
 
 @media (max-height:796px) {
-
-    .boxText{
+    .boxText {
         height: 10px;
         min-height: 250px;
     }
-
-    #section2{
+    #section2 {
         height: 20px;
         margin-top: 170px;
     }
-
-    .interiorForm{
+    .interiorForm {
         height: 500px;
     }
-
-    .selects{
+    .selects {
         height: 100px;
     }
-
-    .selection{
+    .selection {
         margin-top: 190px;
     }
-
-    .boxText, .boxText:nth-of-type(1){
+    .boxText,
+    .boxText:nth-of-type(1) {
         height: 10px;
         min-height: 250px;
         height: 270px;
     }
-
-    #section3 .button{
+    #section3 .button {
         margin-top: -120px;
     }
 }
 
 @media (max-height:710px) {
-    .section{
+    .section {
         height: 40px;
         min-height: 10px;
     }
-
-    .button{
+    .button {
         margin-top: 30px;
     }
-
-    .boxText, .boxText:nth-of-type(1){
+    .boxText,
+    .boxText:nth-of-type(1) {
         height: 10px;
         min-height: 250px;
         height: 270px;
     }
-
-    #section3 .button{
+    #section3 .button {
         margin-top: -240px;
     }
 }
 
-@media (max-height:650px){
-
-    #section2 .button{
+@media (max-height:650px) {
+    #section2 .button {
         width: 50px;
         height: 30px;
     }
-    
-    #section2{
+    #section2 {
         height: 10px;
         margin-top: 110px;
     }
-
-    .labels{
+    .labels {
         font-size: 20px;
         margin-top: -15px;
     }
-
-    .titles{
+    .titles {
         font-size: 20px;
     }
-
 }
 
 @media (max-height:590px) {
-
-    #section1 .button{
+    #section1 .button {
         width: 50px;
         height: 50px;
     }
-
-    .boxText{
+    .boxText {
         height: 10px;
         min-height: 150px;
     }
-
-    .interiorForm{
+    .interiorForm {
         height: 240px;
     }
-
-    #section2 .button{
+    #section2 .button {
         width: 50px;
         height: 50px;
     }
-
-    .labels{
+    .labels {
         font-size: 20px;
         margin-top: -25px;
         display: none;
     }
-
-    .titles{
+    .titles {
         margin-top: -30px;
         font-size: 20px;
         display: none;
     }
-
-    #section2{
+    #section2 {
         height: 10px;
         margin-top: 70px;
     }
-
-    .selection{
+    .selection {
         height: 5px;
         top: -120p;
         padding: 20px;
         padding-bottom: 40px;
         font-size: 15px;
     }
-
-    .selections{
+    .selections {
         width: 90%;
         top: -24px;
     }
-
-    #section3 .button{
+    #section3 .button {
         margin-top: -340px;
         width: 50px;
         height: 50px;
     }
 }
 
-@media (max-height:480px){
-    .labels{
+@media (max-height:480px) {
+    .labels {
         display: none;
     }
-
-    .interiorForm{
+    .interiorForm {
         height: 190px;
     }
-
-    #section2 .button{
+    #section2 .button {
         margin-top: 5px;
     }
 }
 
 @media (max-height:400px) {
-    #section1 .button{
+    #section1 .button {
         margin-top: 5px;
     }
 }
@@ -891,7 +861,7 @@ main::before {
     header h1 {
         font-size: 30px;
     }
-    header .logo{
+    header .logo {
         width: 40px;
     }
     .control {
@@ -966,6 +936,15 @@ main::before {
     }
     28% {
         opacity: 0.7;
+        transform: scale(1, 1);
+    }
+    65% {
+        transform: scale(1, 1);
+    }
+    65.5% {
+        transform: scale(0.5, 3);
+    }
+    66% {
         transform: scale(1, 1);
     }
 }
