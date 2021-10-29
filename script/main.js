@@ -225,9 +225,11 @@ function isDuplicated() {
         valores[0].style.borderBottom = '1px solid #0c0';
         valores[0].style.textAlign = 'left'
         valores[0].value = '';
+        valores[0].disabled = false;
+        valores[0].focus();
 
     }, 1000);
-    valores[0].disabled = false;
+
 }
 
 //Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
@@ -286,8 +288,16 @@ function modifyPlayer(player) {
 //Player es el elemento HTML en si, prevalue es el valor precambio
 function stopEdit(player, preValue) {
     player.removeAttribute("contentEditable")
-    value = player.textContent;
-    players[preValue] = value;
+    if (!players.includes(player.textContent) || players[preValue] == player.textContent) {
+        value = player.textContent;
+        players[preValue] = value;
+    } else {
+        player.style.border = '1px solid red'
+        setTimeout(() => {
+            player.textContent = players[preValue];
+            player.style.border = '1px solid #0c0'
+        }, 500);
+    }
 }
 
 
