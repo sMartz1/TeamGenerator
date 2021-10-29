@@ -129,6 +129,10 @@ main::before {
     width: 100%;
 }
 
+#section2 .selection{
+    margin-top: 30px;
+}
+
 #section1 {
     margin-top: 60px;
 }
@@ -419,6 +423,7 @@ main::before {
 @media (max-width: 600px) {
     .selections {
         width: 91.5%;
+        font-size: 20px;
     }
 }
 
@@ -437,6 +442,7 @@ main::before {
         padding: auto;
     }
     .labels {
+        margin-top: 20px;
         font-size: 20px;
     }
     .titles {
@@ -560,6 +566,21 @@ main::before {
     gap: 1%;
 }
 
+.team::-webkit-scrollbar {
+    width: 25px;
+    height: 5px;
+    background-color: transparent;
+}
+
+.team::-webkit-scrollbar-thumb {
+    background: #0c0;
+}
+
+.team::-webkit-scrollbar-track {
+    border-radius: 2px;
+    cursor: pointer;
+}
+
 .nameTeam {
     font-size: 20px;
     background-color: #0c0;
@@ -571,11 +592,24 @@ main::before {
     max-height: 38px;
 }
 
+@media (max-width:1290px){
+    .team{
+        max-height: 1000px;
+        overflow-y: scroll;
+    }
+}
+
 @media (max-width:590px) {
     .team {
         width: 100%;
     }
     
+}
+
+@media (max-width:370px){
+.selection{
+    width: 40%;
+}
 }
 
 @media (max-width:300px){
@@ -584,7 +618,26 @@ main::before {
     }
 }
 /*----------RESPONSIVE SECTION HEIGHT-----------*/
-@media (max-height:780px) {
+@media (max-height:850px) {
+    #section2{
+        margin-top: 220px;
+        height: 30px;
+    }
+
+    .labels{
+        font-size: 30px;
+    }
+
+    .titles{
+        font-size: 20px;
+    }
+
+    .selects{
+        height: 200px;
+    }
+}
+
+@media (max-height:796px) {
 
     .boxText{
         height: 10px;
@@ -593,6 +646,7 @@ main::before {
 
     #section2{
         height: 20px;
+        margin-top: 170px;
     }
 
     .interiorForm{
@@ -610,11 +664,11 @@ main::before {
     .boxText, .boxText:nth-of-type(1){
         height: 10px;
         min-height: 250px;
-        height: 390px;
+        height: 270px;
     }
 
     #section3 .button{
-        margin-top: -140px;
+        margin-top: -120px;
     }
 }
 
@@ -625,7 +679,7 @@ main::before {
     }
 
     .button{
-        margin-top: 0px;
+        margin-top: 30px;
     }
 
     .boxText, .boxText:nth-of-type(1){
@@ -637,6 +691,29 @@ main::before {
     #section3 .button{
         margin-top: -240px;
     }
+}
+
+@media (max-height:650px){
+
+    #section2 .button{
+        width: 50px;
+        height: 30px;
+    }
+    
+    #section2{
+        height: 10px;
+        margin-top: 110px;
+    }
+
+    .labels{
+        font-size: 20px;
+        margin-top: -15px;
+    }
+
+    .titles{
+        font-size: 20px;
+    }
+
 }
 
 @media (max-height:590px) {
@@ -656,30 +733,37 @@ main::before {
     }
 
     #section2 .button{
-        width: 60px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
 
     .labels{
         font-size: 20px;
-        margin-top: -45px;
+        margin-top: -25px;
+        display: none;
     }
 
     .titles{
+        margin-top: -30px;
         font-size: 20px;
+        display: none;
     }
 
     #section2{
         height: 10px;
-        margin-top: -30px;
+        margin-top: 70px;
     }
 
     .selection{
         height: 5px;
         top: -120p;
+        padding: 20px;
+        padding-bottom: 40px;
+        font-size: 15px;
     }
 
     .selections{
+        width: 90%;
         top: -24px;
     }
 
@@ -687,6 +771,20 @@ main::before {
         margin-top: -340px;
         width: 50px;
         height: 50px;
+    }
+}
+
+@media (max-height:480px){
+    .labels{
+        display: none;
+    }
+
+    .interiorForm{
+        height: 190px;
+    }
+
+    #section2 .button{
+        margin-top: 10px;
     }
 }
 
