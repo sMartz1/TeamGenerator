@@ -3,10 +3,6 @@
     padding: 0px;
 }
 
-main {
-    width: 100%;
-}
-
 body {
     background-color: #000;
     overflow: hidden;
@@ -32,7 +28,7 @@ main {
     animation: colorPulse 5s infinite ease-in-out;
     background-image: radial-gradient(#444, #111);
     width: 100%;
-    min-height: 900px;
+    min-height: 940px;
     box-shadow: 0 0 5vmin 1vmin #000 inset;
     font-family: 'Fira Mono', monospace;
     font-size: 150%;
