@@ -505,7 +505,9 @@ main::before {
     padding-top: 9px;
 }
 
-.file-button:hover {}
+.file-button:hover {
+    cursor: pointer;
+}
 
 .menuButton:hover,
 .button-nav:hover {
@@ -542,6 +544,10 @@ main::before {
     width: 90px;
     margin-top: -10px;
     position: absolute;
+}
+
+.file-button input[type="file"]:hover {
+    cursor: pointer;
 }
 
 
@@ -666,5 +672,60 @@ main::before {
     }
     #inputF {
         font-size: 11250px;
+    }
+}
+
+.modal-welcome {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    width: 100%;
+    min-height: 950px;
+}
+
+.modal-welcome>img {
+    animation: logo-tic 3s infinite;
+}
+
+@keyframes logo-tic {
+    0% {
+        opacity: 0.7;
+    }
+    3% {
+        opacity: 0.1;
+        transform: scale(1, 0.8);
+    }
+    4% {
+        opacity: 0.2;
+        transform: scale(1, 1);
+    }
+    5% {
+        opacity: 0.7;
+        transform: scale(1, 1.2);
+    }
+    6% {
+        opacity: 0.3;
+        transform: scale(1, 1);
+    }
+    25% {
+        transform: scale(1, 1);
+    }
+    26% {
+        opacity: 0.1;
+        transform: scale(2, 0.5);
+    }
+    26.5% {
+        opacity: 0;
+        transform: scale(4, 0.5);
+    }
+    27% {
+        opacity: 0.2;
+        transform: scale(1, 0.5);
+    }
+    28% {
+        opacity: 0.7;
+        transform: scale(1, 1);
     }
 }
