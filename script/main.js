@@ -1,5 +1,6 @@
 //Asumimos que la pagina de entrada es 0
 let currentPage = 0;
+let list = []
 let main = document.getElementsByTagName("main")[0];
 let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
@@ -459,15 +460,20 @@ function generateRandomArr() {
 }
 
 //Devuelve un arr usando de index la matriz generada con generateRandom para insertar nombres aleatoriamente
-function randomTeams() {
+function randomTeams(teams, numPlayers) {
     let randoms = generateRandomArr();
-    let teams = [];
+    let team = [];
+    let index = 0;
 
-    for (let i = 0; i < players.length; i++) {
-        teams.push(players[randoms[i]])
+    for (let i = 0; i < teams; i++) {
+        for (let j = 0; j < numPlayers; j++) {
+            team.push(players[randoms[index]])
+            index++;
+        }
+        list.push(team);
+        team = [];
     }
-
-    return teams;
+    return list;
 }
 
 //Entramos usando this en las options, y asi obtenemos el id del padre y actuamos en consecuencia
@@ -502,104 +508,85 @@ function drawTeam(numered) {
 function makeByPlayers(value) {
     //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
     removeAll(1);
-    let randoms = randomTeams();
-    let index = 0;
+    let comp = false;
     let teams = players.length / value;
     let numPlayers = value;
+    let randoms = randomTeams(teams, numPlayers);
 
-    for (let i = 0; i < teams; i++) {
-        let divElement = drawTeam(i); //Dibujamos equipo
+    for (let i = 1; i < teams; i++) {
+        let divElement = drawTeam(i - 1); //Dibujamos equipo
 
         for (let j = 0; j < numPlayers; j++) {
-            if (randoms[index] == undefined) {
-                break;
+            let player = randoms[i - 1][j]
+            if (player != undefined) {
+                divElement.appendChild(drawPlayer(player, 1));
             }
-            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
-            divElement.appendChild(player)
-            index++;
         }
 
-        playerBoards[1].appendChild(divElement);
+        if (randoms[i].includes(undefined)) {
+            let index = 0;
+            while (randoms[i][index] != undefined) {
+                let player = randoms[i][index]
+                if (player != undefined) {
+                    let myDiv = playerBoards[1].children[index]
+                    myDiv.appendChild(drawPlayer(player, 1));
 
-        if (divElement.children <= 1) {
-            divElement.remove();
+                }
+                index++;
+            }
+            comp = true;
         }
 
+        playerBoards[1].appendChild(divElement)
+
+        if (comp) {
+            break;
+        }
     }
-
-    normalizeTeams();
-    mapTeams();
+    list = [];
 }
 
 //Esta los repartira por equipos
 function makeByTeams(value) {
     removeAll(1);
-    let randoms = randomTeams();
-    let index = 0;
+    let comp = false;
     let teams = value;
     let numPlayers = players.length / value;
+    let randoms = randomTeams(teams, numPlayers);
 
     for (let i = 0; i < teams; i++) {
-        let divElement = drawTeam(i); //Dibujamos equipo
+        let divElement;
 
-        for (let j = 0; j < numPlayers; j++) {
-            if (randoms[index] == undefined) {
-                break;
+        if (randoms[i].includes(undefined) && playerBoards[1].childElementCount > 1) {
+            let index = 0;
+            let myDiv;
+            while (randoms[i][index] != undefined) {
+                let player = randoms[i][index]
+                if (playerBoards[1].children[index] != undefined) {
+                    myDiv = playerBoards[1].children[index]
+                    myDiv.appendChild(drawPlayer(player, 1));
+                }
+                index++;
             }
-            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
-            divElement.appendChild(player)
-            index++;
-        }
-
-        playerBoards[1].appendChild(divElement);
-    }
-
-    normalizeTeams();//Igualamos equipos
-    mapTeams();//Los mapeamos
-
-}
-
-//Esta funcion normalizara los equipos si no se pudieron distribuir correctamente
-function normalizeTeams() {
-    //Mientras el largo de los hijos del primer hijo del tablero sea diferente al largo de los hijos del ultimo elemento
-    while (playerBoards[1].firstElementChild.childElementCount != playerBoards[1].lastElementChild.childElementCount &&
-        playerBoards[1].childElementCount > 2) {
-        //Si el largo de los hijos del ultimo elemento es = 1 es que esta vacio, lo borramos
-        if (playerBoards[1].lastElementChild.childElementCount == 1) {
-            playerBoards[1].lastElementChild.remove();
+            comp = true;
         } else {
-            //Si no capturamos el ultimo hijo del ultimo elemento del tablero a la vez que lo removemos
-            let player = playerBoards[1].children[playerBoards[1].childElementCount - 1].children[1];
-            playerBoards[1].children[playerBoards[1].childElementCount - 1].children[1].remove();
-            //Y si es diferente a undefined(el ultimo elemento que sacara es undefined)
-            if (player != undefined) {
-                //Lo metera en el penultimo hijo del tablero
-                playerBoards[1].children[playerBoards[1].children.length - 2].appendChild(player);
+            divElement = drawTeam(i); //Dibujamos equipo
+            for (let j = 0; j < numPlayers; j++) {
+                let player = randoms[i][j]
+                if (player != undefined) {
+                    divElement.appendChild(drawPlayer(player, 1));
+                }
             }
-            //casi na
         }
-    }
-}
 
-//Mapeo de teams tras la normalizacion
-function mapTeams() {
-    let arr = playerBoards[1].children
-    let result = []
-    let result1 = []
-
-    for (let i = 0; i < arr.length; i++) {
-        result.push(arr[i].children[0].innerText);
-        for (let j = 1; j < arr[i].childElementCount; j++) {
-            let p = arr[i].children[j].children[0].innerText
-            result1.push(p)
+        if (comp) {
+            list = []
+            break;
         }
-        result.push(result1);
-        result1 = [];
+        playerBoards[1].appendChild(divElement)
     }
-    list = result
+    list = [];
 }
-
-let list = []
 
 //Para testear rapido
 function renovar(numero) {
