@@ -377,11 +377,17 @@ function generateByTeamNumber(len) {
     for (let index = 2; index < len / 2; index++) {
         //Verificamos que los equipos sean de minimo 2 participantes
         if (len % index == 0 || len % index == 1) {
-            auxArrOptions.push(generateOptionHTML(index));
+            let option = generateOptionHTML(index)
+            if (len % index == 0 || index == 2) {
+                auxArrOptions.push(option);
+            } else if (len % index == 1) {
+                option.classList.add('is-odd')
+                auxArrOptions.push(option);
+            }
         }
     }
-    return auxArrOptions;
 
+    return auxArrOptions;
 }
 //Generar lista de options en base a numero de players
 function generateByPlayerNumber(len) {
