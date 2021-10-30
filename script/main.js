@@ -90,11 +90,6 @@ function changeFade(label, option) {
             main.classList.remove("change-page-animation");
         }, 200);
 
-
-
-
-
-
     } else {
         setTimeout(() => label.classList.add("no-visibility"), 200);
 
@@ -508,8 +503,7 @@ function drawTeam(numered) {
 function makeByPlayers(value) {
     //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
     removeAll(1);
-    let comp = false;
-    let teams = players.length / value;
+    let teams = Math.floor(players.length / value) + 1;
     let numPlayers = value;
     let randoms = randomTeams(teams, numPlayers);
 
@@ -534,14 +528,9 @@ function makeByPlayers(value) {
                 }
                 index++;
             }
-            comp = true;
         }
 
         playerBoards[1].appendChild(divElement)
-
-        if (comp) {
-            break;
-        }
     }
     list = [];
 }

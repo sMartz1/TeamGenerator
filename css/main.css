@@ -6,7 +6,23 @@
 body {
     background-color: #000;
     overflow: hidden;
-    /* background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);*/
+}
+
+/*-------------------------------*/
+/*------- INITIAL MODAL ---------*/
+/*-------------------------------*/
+.modal-welcome {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    width: 100%;
+    min-height: 950px;
+}
+
+.modal-welcome>img {
+    animation: logo-tic 3s infinite;
 }
 
 h1 {
@@ -92,7 +108,9 @@ main::before {
     z-index: 1;
 }
 
-/*Estilos de cabecera con logo */
+/* -------------- */
+/* ---- LOGO ---- */
+/* -------------- */
 
 .logo {
     height: 50px;
@@ -100,8 +118,9 @@ main::before {
     opacity: 0.7;
 }
 
-
-/* Secciones principales */
+/*---------------------------------------------*/
+/* ------------- Principal Sections ---------- */
+/*---------------------------------------------*/
 
 .section {
     display: flex;
@@ -126,8 +145,6 @@ main::before {
 #section1 {
     margin-top: 60px;
 }
-
-#section3 {}
 
 .control {
     display: flex;
@@ -187,8 +204,9 @@ main::before {
     }
 }
 
-
-/*scroll BOXTEXT*/
+/* -------------------------------- */
+/* -------- scroll BOXTEXT -------- */
+/* -------------------------------- */
 
 .boxText::-webkit-scrollbar {
     width: 25px;
@@ -205,8 +223,9 @@ main::before {
     cursor: pointer;
 }
 
-
+/*----------------------------------------*/
 /*-----Animacion waiting users en p ------*/
+/*----------------------------------------*/
 
 .boxText>p {
     padding-top: 5%;
@@ -281,8 +300,9 @@ main::before {
     height: 700px;
 }
 
-
-/*Estilos P player */
+/*------------------------------------*/
+/* --------- Players Styles --------- */
+/*------------------------------------*/
 
 .player {
     display: flex;
@@ -334,8 +354,9 @@ main::before {
     border: solid #0c0 1px;
 }
 
-
-/****/
+/*--------------------------------*/
+/*--------Section2 Styles---------*/
+/*--------------------------------*/
 
 .labels {
     margin: auto;
@@ -394,8 +415,9 @@ main::before {
 
 
 
-
-/* Estilos del scroll */
+/* -------------------------------- */
+/* ------ Estilos del scroll ------ */
+/* -------------------------------- */
 
 .selects::-webkit-scrollbar {
     width: 25px;
@@ -413,8 +435,9 @@ main::before {
     cursor: pointer;
 }
 
-
-/* Estilos botones */
+/* ------------------------------ */
+/* ------- Buttons Styles ------- */
+/* ------------------------------ */
 
 .button {
     display: flex;
@@ -491,8 +514,9 @@ main::before {
     cursor: pointer;
 }
 
-
-/* Clase para el grupo de participantes */
+/*------------------------------*/
+/* Styles for teams in Section3 */
+/*------------------------------*/
 
 .team {
     width: 40%;
@@ -541,7 +565,7 @@ main::before {
 
 
 /*----------------------------------------------*/
-/*----------RESPONSIVE SECTION WIDTH-----------*/
+/*----------RESPONSIVE SECTION WIDTH------------*/
 /*----------------------------------------------*/
 
 @media (max-width:1290px) {
@@ -816,18 +840,6 @@ main::before {
     }
 }
 
-
-/*ANIMACIONES MEDIANTE CLASES Y KEYFRAMES*/
-
-
-/* .fade-in{
-    animation: fadeIn 2s ease-in-out normal 2s forwards;
-}
-
-.fade-out{
-    animation: fadeOut 1s ease-in-out normal 1s forwards;
-} */
-
 .no-visibility {
     display: none;
 }
@@ -881,23 +893,6 @@ main::before {
 }
 
 
-/* Responsive Title */
-
-
-
-.modal-welcome {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #111;
-    width: 100%;
-    min-height: 950px;
-}
-
-.modal-welcome>img {
-    animation: logo-tic 3s infinite;
-}
 
 @keyframes logo-tic {
     0% {
