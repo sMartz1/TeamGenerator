@@ -92,16 +92,6 @@ main::before {
     z-index: 1;
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 0px;
-    }
-    #tip-Upload {
-        display: none;
-    }
-}
-
-
 /*Estilos de cabecera con logo */
 
 .logo {
@@ -402,65 +392,7 @@ main::before {
     cursor: pointer;
 }
 
-@media (max-width: 900px) {
-    .selection {
-        font-size: 20px;
-    }
-    .labels {
-        font-size: 40px;
-        margin: auto;
-        padding-top: 15%;
-    }
-    .selects {
-        padding-left: 20px;
-        width: 95%;
-    }
-    .titles {
-        font-size: 30px;
-    }
-}
 
-@media (max-width: 600px) {
-    .selections {
-        width: 91.5%;
-        font-size: 20px;
-    }
-}
-
-@media(max-width:460px) {
-    .selections {
-        padding: 0px;
-        padding-right: 0px;
-        margin: 0px;
-        margin-left: 0px;
-        width: 70%;
-        align-self: center;
-    }
-    .selection {
-        font-size: 15px;
-        margin: auto;
-        padding: auto;
-    }
-    .labels {
-        margin-top: 20px;
-        font-size: 20px;
-    }
-    .titles {
-        font-size: 15px;
-    }
-    .selects {
-        width: 93%;
-    }
-    .text {
-        font-size: 200%;
-    }
-}
-
-@media (max-width:370px) {
-    .selection {
-        width: 30%;
-    }
-}
 
 
 /* Estilos del scroll */
@@ -606,6 +538,12 @@ main::before {
     box-shadow: 0px 0px 5px red;
 }
 
+
+
+/*----------------------------------------------*/
+/*----------RESPONSIVE SECTION WIDTH-----------*/
+/*----------------------------------------------*/
+
 @media (max-width:1290px) {
     .team {
         max-height: 1000px;
@@ -616,9 +554,95 @@ main::before {
     }
 }
 
-@media (max-width:590px) {
+@media (max-width: 900px) {
+    .selection {
+        font-size: 20px;
+    }
+    .labels {
+        font-size: 40px;
+        margin: auto;
+        padding-top: 15%;
+    }
+    .selects {
+        padding-left: 20px;
+        width: 95%;
+    }
+    .titles {
+        font-size: 30px;
+    }
+}
+
+@media (max-width:600px) {
     .team {
         width: 100%;
+    }
+
+    .selections {
+        width: 91.5%;
+        font-size: 20px;
+    }
+    body {
+        padding: 0px;
+    }
+    #tip-Upload {
+        display: none;
+    }
+}
+
+@media(max-width:460px) {
+    .selections {
+        padding: 0px;
+        padding-right: 0px;
+        margin: 0px;
+        margin-left: 0px;
+        width: 70%;
+        align-self: center;
+    }
+    .selection {
+        font-size: 15px;
+        margin: auto;
+        padding: auto;
+    }
+    .labels {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+    .titles {
+        font-size: 15px;
+    }
+    .selects {
+        width: 93%;
+    }
+    .text {
+        font-size: 200%;
+    }
+}
+
+@media (max-width:400px) {
+    header h1 {
+        font-size: 30px;
+    }
+    header .logo {
+        width: 40px;
+    }
+    .control {
+        width: 100%;
+        margin-right: 10px;
+        margin-left: 10px;
+        height: 30px;
+        margin-bottom: 60px;
+        font-size: 10px;
+    }
+    .control div {
+        width: 20%;
+        font-size: 50px;
+        height: 50px;
+    }
+    .file-button {
+        height: 40px;
+    }
+    #inputF {
+        font-size: 11250px;
     }
 }
 
@@ -640,8 +664,9 @@ main::before {
     }
 }
 
-
+/*----------------------------------------------*/
 /*----------RESPONSIVE SECTION HEIGHT-----------*/
+/*----------------------------------------------*/
 
 @media (max-height:850px) {
     #section2 {
@@ -858,33 +883,7 @@ main::before {
 
 /* Responsive Title */
 
-@media (max-width:400px) {
-    header h1 {
-        font-size: 30px;
-    }
-    header .logo {
-        width: 40px;
-    }
-    .control {
-        width: 100%;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 30px;
-        margin-bottom: 60px;
-        font-size: 10px;
-    }
-    .control div {
-        width: 20%;
-        font-size: 50px;
-        height: 50px;
-    }
-    .file-button {
-        height: 40px;
-    }
-    #inputF {
-        font-size: 11250px;
-    }
-}
+
 
 .modal-welcome {
     position: absolute;
