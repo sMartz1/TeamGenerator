@@ -374,12 +374,11 @@ function createOptions() {
 function generateByTeamNumber(len) {
     //Alamcenamos las opciones en un array auxiliar
     let auxArrOptions = [];
-    for (let index = 2; index < len; index++) {
+    for (let index = 2; index < len / 2; index++) {
         //Verificamos que los equipos sean de minimo 2 participantes
-        if (len / index < 2) {
-            break;
+        if (len % index == 0 || len % index == 1) {
+            auxArrOptions.push(generateOptionHTML(index));
         }
-        auxArrOptions.push(generateOptionHTML(index));
     }
     return auxArrOptions;
 
@@ -389,7 +388,9 @@ function generateByPlayerNumber(len) {
     let auxArrOptions = [];
     //Los equipos pueden ser minimo de dos participantes, por lo que hacemos len.lenght/2 en el for-
     for (let index = 2; index <= len / 2; index++) {
-        auxArrOptions.push(generateOptionHTML(index));
+        if (len % index == 0 || len % index == 1) {
+            auxArrOptions.push(generateOptionHTML(index));
+        }
     }
     return auxArrOptions;
 }
@@ -473,7 +474,6 @@ function selectOption(option) {
         makeByTeams(value);
     }
 
-    console.log(list);
     currentPage++;
     changeDom();
 }
@@ -492,44 +492,37 @@ function drawTeam(numered) {
     return divElement
 }
 
-//Una variable para poder hacer copy paste de los equipos
-let list = [];
-
 //Esta funcion los repartira por jugadores
 function makeByPlayers(value) {
     //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
     removeAll(1);
     let randoms = randomTeams();
     let index = 0;
+    let teams = players.length / value;
+    let numPlayers = value;
 
-    let aux = Math.round(players.length / value);
-
-    for (let i = 0; i < aux; i++) {
+    for (let i = 0; i < teams; i++) {
         let divElement = drawTeam(i); //Dibujamos equipo
-        list.push(divElement.firstElementChild.innerText)
-        let team = [];
-        for (let j = 0; j < Math.round(players.length / aux); j++) {
+
+        for (let j = 0; j < numPlayers; j++) {
             if (randoms[index] == undefined) {
                 break;
             }
-            team.push(randoms[index]);
             let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
             divElement.appendChild(player)
             index++;
+        }
 
-        }
-        list.push(team);
-        if (randoms[index + 1] == undefined) {
-            console.log('Makebyplayers')
-            preventLastPlayer(randoms, index)
-            index++
-        }
         playerBoards[1].appendChild(divElement);
 
+        if (divElement.children <= 1) {
+            divElement.remove();
+        }
+
     }
-    if (playerBoards[1].lastElementChild.childNodes.length <= 1) {
-        playerBoards[1].lastElementChild.remove();
-    }
+
+    normalizeTeams();
+    mapTeams();
 }
 
 //Esta los repartira por equipos
@@ -537,45 +530,70 @@ function makeByTeams(value) {
     removeAll(1);
     let randoms = randomTeams();
     let index = 0;
+    let teams = value;
+    let numPlayers = players.length / value;
 
-    let aux = Math.round(players.length / value);
-
-    for (let i = 0; i < value; i++) {
+    for (let i = 0; i < teams; i++) {
         let divElement = drawTeam(i); //Dibujamos equipo
 
-        let team = [];
-        for (let j = 0; j < aux; j++) {
+        for (let j = 0; j < numPlayers; j++) {
             if (randoms[index] == undefined) {
                 break;
             }
-            team.push(randoms[index])
             let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
             divElement.appendChild(player)
             index++;
-            if (randoms[index + 1] == undefined) {
-                console.log('Makebyteams')
-                preventLastPlayer(randoms, index)
-                index++;
-            }
         }
-        list.push(team);
 
         playerBoards[1].appendChild(divElement);
     }
 
-    if (playerBoards[1].lastElementChild.childNodes.length <= 1) {
-        playerBoards[1].lastElementChild.remove();
-    }
+    normalizeTeams();//Igualamos equipos
+    mapTeams();//Los mapeamos
 
 }
 
-function preventLastPlayer(randoms, index) {
-    if (randoms[index] != undefined) {
-        let player = drawPlayer(randoms[index], 1);
-        list[list.length - 3].push(randoms[index]);
-        playerBoards[1].lastElementChild.appendChild(player);
+//Esta funcion normalizara los equipos si no se pudieron distribuir correctamente
+function normalizeTeams() {
+    //Mientras el largo de los hijos del primer hijo del tablero sea diferente al largo de los hijos del ultimo elemento
+    while (playerBoards[1].firstElementChild.childElementCount != playerBoards[1].lastElementChild.childElementCount &&
+        playerBoards[1].childElementCount > 2) {
+        //Si el largo de los hijos del ultimo elemento es = 1 es que esta vacio, lo borramos
+        if (playerBoards[1].lastElementChild.childElementCount == 1) {
+            playerBoards[1].lastElementChild.remove();
+        } else {
+            //Si no capturamos el ultimo hijo del ultimo elemento del tablero a la vez que lo removemos
+            let player = playerBoards[1].children[playerBoards[1].childElementCount - 1].children[1];
+            playerBoards[1].children[playerBoards[1].childElementCount - 1].children[1].remove();
+            //Y si es diferente a undefined(el ultimo elemento que sacara es undefined)
+            if (player != undefined) {
+                //Lo metera en el penultimo hijo del tablero
+                playerBoards[1].children[playerBoards[1].children.length - 2].appendChild(player);
+            }
+            //casi na
+        }
     }
 }
+
+//Mapeo de teams tras la normalizacion
+function mapTeams() {
+    let arr = playerBoards[1].children
+    let result = []
+    let result1 = []
+
+    for (let i = 0; i < arr.length; i++) {
+        result.push(arr[i].children[0].innerText);
+        for (let j = 1; j < arr[i].childElementCount; j++) {
+            let p = arr[i].children[j].children[0].innerText
+            result1.push(p)
+        }
+        result.push(result1);
+        result1 = [];
+    }
+    list = result
+}
+
+let list = []
 
 //Para testear rapido
 function renovar(numero) {
