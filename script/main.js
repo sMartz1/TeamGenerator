@@ -1,5 +1,6 @@
 //Asumimos que la pagina de entrada es 0
 let currentPage = 0;
+let list = []
 let main = document.getElementsByTagName("main")[0];
 let s1 = document.getElementById("section1");
 let s2 = document.getElementById("section2");
@@ -225,9 +226,10 @@ function isDuplicated() {
         valores[0].style.borderBottom = '1px solid #0c0';
         valores[0].style.textAlign = 'left'
         valores[0].value = '';
-
+        valores[0].disabled = false;
+        valores[0].focus();
     }, 1000);
-    valores[0].disabled = false;
+
 }
 
 //Dibujamos al player, value pasa el string y option es referente de donde le llegara la orden, s1 o s2
@@ -286,8 +288,16 @@ function modifyPlayer(player) {
 //Player es el elemento HTML en si, prevalue es el valor precambio
 function stopEdit(player, preValue) {
     player.removeAttribute("contentEditable")
-    value = player.textContent;
-    players[preValue] = value;
+    if (!players.includes(player.textContent) || players[preValue] == player.textContent) {
+        value = player.textContent;
+        players[preValue] = value;
+    } else {
+        player.style.border = '1px solid red'
+        setTimeout(() => {
+            player.textContent = players[preValue];
+            player.style.border = '1px solid #0c0'
+        }, 500);
+    }
 }
 
 
@@ -365,22 +375,29 @@ function createOptions() {
 function generateByTeamNumber(len) {
     //Alamcenamos las opciones en un array auxiliar
     let auxArrOptions = [];
-    for (let index = 2; index < len; index++) {
+    for (let index = 2; index < len / 2; index++) {
         //Verificamos que los equipos sean de minimo 2 participantes
-        if (len / index < 2) {
-            break;
+        if (len % index == 0 || len % index == 1) {
+            let option = generateOptionHTML(index)
+            if (len % index == 0 || index == 2) {
+                auxArrOptions.push(option);
+            } else if (len % index == 1 && !(index == 3)) {
+                option.classList.add('is-odd')
+                auxArrOptions.push(option);
+            }
         }
-        auxArrOptions.push(generateOptionHTML(index));
     }
-    return auxArrOptions;
 
+    return auxArrOptions;
 }
 //Generar lista de options en base a numero de players
 function generateByPlayerNumber(len) {
     let auxArrOptions = [];
     //Los equipos pueden ser minimo de dos participantes, por lo que hacemos len.lenght/2 en el for-
     for (let index = 2; index <= len / 2; index++) {
-        auxArrOptions.push(generateOptionHTML(index));
+        if (len % index == 0 || len % index == 1) {
+            auxArrOptions.push(generateOptionHTML(index));
+        }
     }
     return auxArrOptions;
 }
@@ -443,15 +460,20 @@ function generateRandomArr() {
 }
 
 //Devuelve un arr usando de index la matriz generada con generateRandom para insertar nombres aleatoriamente
-function randomTeams() {
+function randomTeams(teams, numPlayers) {
     let randoms = generateRandomArr();
-    let teams = [];
+    let team = [];
+    let index = 0;
 
-    for (let i = 0; i < players.length; i++) {
-        teams.push(players[randoms[i]])
+    for (let i = 0; i < teams; i++) {
+        for (let j = 0; j < numPlayers; j++) {
+            team.push(players[randoms[index]])
+            index++;
+        }
+        list.push(team);
+        team = [];
     }
-
-    return teams;
+    return list;
 }
 
 //Entramos usando this en las options, y asi obtenemos el id del padre y actuamos en consecuencia
@@ -463,7 +485,6 @@ function selectOption(option) {
     } else {
         makeByTeams(value);
     }
-
 
     currentPage++;
     changeDom();
@@ -487,61 +508,84 @@ function drawTeam(numered) {
 function makeByPlayers(value) {
     //Borra todos los elementos de la section 3 pero no el arr players, si lo hace se carga la generacion de teams
     removeAll(1);
-    let randoms = randomTeams();
-    let index = 0;
+    let comp = false;
+    let teams = players.length / value;
+    let numPlayers = value;
+    let randoms = randomTeams(teams, numPlayers);
 
-    for (let i = 0; i < players.length / value; i++) {
-        if (randoms[index + 1] == undefined) {
-            return preventLastPlayer(randoms, index)
-        }
+    for (let i = 1; i < teams; i++) {
+        let divElement = drawTeam(i - 1); //Dibujamos equipo
 
-        let divElement = drawTeam(i); //Dibujamos equipo
-
-        for (let j = 0; j < value; j++) {
-            if (randoms[index] == undefined) {
-                break;
+        for (let j = 0; j < numPlayers; j++) {
+            let player = randoms[i - 1][j]
+            if (player != undefined) {
+                divElement.appendChild(drawPlayer(player, 1));
             }
-            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
-            divElement.appendChild(player)
-            index++;
         }
 
-        playerBoards[1].appendChild(divElement);
+        if (randoms[i].includes(undefined)) {
+            let index = 0;
+            while (randoms[i][index] != undefined) {
+                let player = randoms[i][index]
+                if (player != undefined) {
+                    let myDiv = playerBoards[1].children[index]
+                    myDiv.appendChild(drawPlayer(player, 1));
 
+                }
+                index++;
+            }
+            comp = true;
+        }
+
+        playerBoards[1].appendChild(divElement)
+
+        if (comp) {
+            break;
+        }
     }
-
+    list = [];
 }
 
 //Esta los repartira por equipos
 function makeByTeams(value) {
     removeAll(1);
-    let randoms = randomTeams();
-    let index = 0;
+    let comp = false;
+    let teams = value;
+    let numPlayers = players.length / value;
+    let randoms = randomTeams(teams, numPlayers);
 
-    for (let i = 0; i < value; i++) {
-        if (randoms[index + 1] == undefined) {
-            return preventLastPlayer(randoms, index)
-        }
+    for (let i = 0; i < teams; i++) {
+        let divElement;
 
-        let divElement = drawTeam(i); //Dibujamos equipo
-
-        for (let j = 0; j < players.length / value; j++) {
-            if (randoms[index] == undefined) {
-                break;
+        if (randoms[i].includes(undefined) && playerBoards[1].childElementCount > 1) {
+            let index = 0;
+            let myDiv;
+            while (randoms[i][index] != undefined) {
+                let player = randoms[i][index]
+                if (playerBoards[1].children[index] != undefined) {
+                    myDiv = playerBoards[1].children[index]
+                    myDiv.appendChild(drawPlayer(player, 1));
+                }
+                index++;
             }
-            let player = drawPlayer(randoms[index], 1); //Dibujamos cada jugador
-            divElement.appendChild(player)
-            index++;
+            comp = true;
+        } else {
+            divElement = drawTeam(i); //Dibujamos equipo
+            for (let j = 0; j < numPlayers; j++) {
+                let player = randoms[i][j]
+                if (player != undefined) {
+                    divElement.appendChild(drawPlayer(player, 1));
+                }
+            }
         }
 
-        playerBoards[1].appendChild(divElement);
-
+        if (comp) {
+            list = []
+            break;
+        }
+        playerBoards[1].appendChild(divElement)
     }
-}
-
-function preventLastPlayer(randoms, index) {
-    let player = drawPlayer(randoms[index], 1);
-    playerBoards[1].lastChild.appendChild(player);
+    list = [];
 }
 
 //Para testear rapido
@@ -557,6 +601,5 @@ window.addEventListener("load", e => {
     let modalWelcome = document.getElementsByClassName("modal-welcome")[0];
     setTimeout(() => modalWelcome.remove(), 3000);
     setTimeout(() => main.classList.remove("no-visibility"), 3000);
-
-
 })
+
