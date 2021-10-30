@@ -380,7 +380,7 @@ function generateByTeamNumber(len) {
             let option = generateOptionHTML(index)
             if (len % index == 0 || index == 2) {
                 auxArrOptions.push(option);
-            } else if (len % index == 1) {
+            } else if (len % index == 1 && !(index == 3)) {
                 option.classList.add('is-odd')
                 auxArrOptions.push(option);
             }
